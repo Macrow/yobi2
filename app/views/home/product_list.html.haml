@@ -1,0 +1,50 @@
+.column.grid_12
+  .banner
+    = image_tag("slider-images/toystory.jpg")
+.column.grid_12
+  = render "shared/breadcrumbs"
+.column.grid_9
+  #product_list_content
+    %h2 热铆装订机
+    .category_img
+      = image_tag("slider-images/toystory.jpg", :size => "660x150")
+    %h2 热铆装订机
+    .category_img
+      = image_tag("slider-images/nemo.jpg", :size => "660x150")
+    %h2 热铆装订机
+    .tooltip_container.image_grid
+      - (1..22).to_a.each do |i|
+        = link_to image_tag("/assets/no-pic.gif", :size => "100x100", :title => "热铆装订机<br/>价格：900<br/>性能优良，欢迎购买！"), product_path
+  .paginate.pull-right
+    %ul
+      %li= link_to "‹", root_path
+      %li= link_to "1", root_path
+      %li= link_to "2", root_path
+      %li= link_to "3", root_path
+      %li= link_to "4", root_path
+      %li= link_to "5", root_path, :class => "active"
+      %li= link_to "6", root_path
+      %li= link_to "7", root_path
+      %li= link_to "8", root_path
+      %li= link_to "…", root_path, :class => "more"
+      %li= link_to "9", root_path
+      %li= link_to "10", root_path
+      %li= link_to "11", root_path
+      %li= link_to "12", root_path
+      %li= link_to "›", root_path
+.column.grid_3
+  #sidebar.border
+    %h3 装订机使用说明
+    .article
+      .content
+        %p 友比财务商城（www.51yobi.com)是友比科技全力打造的专业的财务配套用品网上商城，秉承“财务之友、比肩同行”，帮助客户成功的经营理念，以提供财务软件、配套用品及设备类产品为主体的电子商城，让客户体验一站式财务用品快捷采购。
+    .splitter
+    %h3 装订机使用说明
+    .article
+      .content
+        %p 友比财务商城（www.51yobi.com)是友比科技全力打造的专业的财务配套用品网上商城，秉承“财务之友、比肩同行”，帮助客户成功的经营理念，以提供财务软件、配套用品及设备类产品为主体的电子商城，让客户体验一站式财务用品快捷采购。
+    .splitter
+    %h3 装订机使用说明
+    .article
+      .content
+        %p 友比财务商城（www.51yobi.com)是友比科技全力打造的专业的财务配套用品网上商城，秉承“财务之友、比肩同行”，帮助客户成功的经营理念，以提供财务软件、配套用品及设备类产品为主体的电子商城，让客户体验一站式财务用品快捷采购。

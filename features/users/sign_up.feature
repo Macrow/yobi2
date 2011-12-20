@@ -14,8 +14,8 @@ Feature: Sign up
         | Email                 | user@test.com   |
         | Password              | please          |
         | Password confirmation | please          |
-      And I press "Sign up"
-      Then I should see "Welcome! You have signed up successfully." 
+      And I press sign up button
+      Then I should see sign up successful message
       
     Scenario: User signs up with invalid email
       And I fill in the following:
@@ -23,8 +23,8 @@ Feature: Sign up
         | Email                 | invalidemail    |
         | Password              | please          |
         | Password confirmation | please          |
-      And I press "Sign up"
-      Then I should see "Email is invalid"
+      And I press sign up button
+      Then I should see invalid email message
 
     Scenario: User signs up without password
       And I fill in the following:
@@ -32,8 +32,8 @@ Feature: Sign up
         | Email                 | user@test.com   |
         | Password              |                 |
         | Password confirmation | please          |
-      And I press "Sign up"
-      Then I should see "Password can't be blank"
+      And I press sign up button
+      Then I should see password confirmation error message
 
     Scenario: User signs up without password confirmation
       And I fill in the following:
@@ -41,8 +41,8 @@ Feature: Sign up
         | Email                 | user@test.com   |
         | Password              | please          |
         | Password confirmation |                 |
-      And I press "Sign up"
-      Then I should see "Password doesn't match confirmation"
+      And I press sign up button
+      Then I should see password confirmation error message
 
     Scenario: User signs up with mismatched password and confirmation
       And I fill in the following:
@@ -50,6 +50,5 @@ Feature: Sign up
         | Email                 | user@test.com   |
         | Password              | please          |
         | Password confirmation | please1         |
-      And I press "Sign up"
-      Then I should see "Password doesn't match confirmation"
-
+      And I press sign up button
+      Then I should see password confirmation error message

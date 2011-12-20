@@ -1,21 +1,24 @@
-!!!
-%html
-  %head
-    %title Yobi2
-    %meta{:charset => "utf-8"}
-    %meta{"http-equiv" => "X-UA-Compatible", :content => "IE=edge,chrome=1"}
-    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
-    = stylesheet_link_tag :application
-    = javascript_include_tag :application
-    = csrf_meta_tags
-  %body{:class => params[:controller]}
-    #container.container
-      %header
-        %nav
-          %ul.hmenu
-            = render 'shared/navigation'
-        - flash.each do |name, msg|
-          = content_tag :div, msg, :id => "flash_\#{name}" if msg.is_a?(String)
-      #main{:role => "main"}
-        = yield
-      %footer
+!!! 5
+- conditional_html
+%head
+  %title Yobi2
+  %meta{:charset => "utf-8"}
+  /[if lt IE 9]
+    %script{:src => "http://html5shim.googlecode.com/svn/trunk/html5.js"}
+  /[if IE 6]
+    = javascript_include_tag("DD_belatedPNG.js")
+  %meta{"http-equiv" => "X-UA-Compatible", :content => "IE=edge,chrome=1"}
+  = stylesheet_link_tag :application
+  = javascript_include_tag :application
+  = csrf_meta_tags
+%body{:class => params[:controller]}
+  #layout
+    %header.header
+      = render "shared/header"
+    #main.row
+      - flash.each do |name, msg|
+        = content_tag :div, msg, :id => "flash_\#{name}" if msg.is_a?(String)
+      = yield
+    #layout_footer
+  %footer.footer
+    = render "shared/footer"

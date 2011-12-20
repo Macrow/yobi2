@@ -1,0 +1,49 @@
+/* --------------------------------------------------------
+clean variables
+-------------------------------------------------------- */
+
+@import "compass/css3";
+@import "compass/css3/pie";
+
+// Links
+$link-color:        #0069d6;
+$link-color-hover:  darken($link-color, 15);
+
+// Grays
+$black:             #000;
+$gray-dark:         lighten($black, 25%);
+$gray:              lighten($black, 50%);
+$gray-light:        lighten($black, 75%);
+$gray-lighter:      lighten($black, 90%);
+$white:             #fff;
+
+// Accent Colors
+$blue:              #049CDB;
+$blue-dark:         #0064CD;
+$green:             #46a546;
+$red:               #9d261d;
+$yellow:            #ffc40d;
+$orange:            #f89406;
+$pink:              #c3325f;
+$purple:            #7a43b6;
+
+// Baseline grid
+$basefont:          13px;
+$baseline:          18px;
+
+// Use PIE for IE6,IE7,IE8
+$use-pie: true;
+$pie-behavior: url("/assets/PIE.htc");
+
+// Header & footer
+$header-background-color: #15273d;
+$header-link-color: $blue;
+$header-height: 50px;
+$header-logo-height: 20px;
+$header-logo-width: 80px;
+$header-logo-color: lighten($blue, 20%);
+$header-logo-hover-color: #ff6701;
+$footer-height: 150px;
+$footer-background-color: #232323;
+$footer-font-color: #dddddd;
+$oldie-box-shadow-color: lighten($default-box-shadow-color, 50%);

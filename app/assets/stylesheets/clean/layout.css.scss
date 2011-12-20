@@ -1,0 +1,477 @@
+/* --------------------------------------------------------
+clean layout
+-------------------------------------------------------- */
+
+@import "compass/layout";
+@import "compass/css3";
+@import "compass/utilities";
+@import "compass/typography";
+@import "compass/css3/pie";
+
+@include sticky-footer(20px, "#layout", "#layout_footer", ".footer");
+
+// Number of Columns = 12, Column Width = 60, Gutter Width = 20
+.row {
+	width: 960px;
+	margin: 0 auto;
+	overflow: hidden;
+	.column {
+		margin: 0 10px;
+		overflow: hidden;
+		float: left;
+		display: inline;
+	}
+	.pull-right {
+		@include float-right;
+	}
+	.grid_1 { width:60px; }
+	.grid_2 { width:140px; }
+	.grid_3 { width:220px; }
+	.grid_4 { width:300px; }
+	.grid_5 { width:380px; }
+	.grid_6 { width:460px; }
+	.grid_7 { width:540px; }
+	.grid_8 { width:620px; }
+	.grid_9 { width:700px; }
+	.grid_10 { width:780px; }
+	.grid_11 { width:860px; }
+	.grid_12 { width:940px; }
+	.row {
+		margin: 0 -10px;
+		width: auto;
+		display: inline-block;
+	}
+}
+ 
+.header {
+  height: $header-height;
+	@include single-box-shadow($default-box-shadow-color, 0, 0, 2px);
+	background: $header-background-color;
+	h1 {
+		a {
+			font-size: 25px;
+			font-weight: bold;
+			line-height: $header-height;
+			padding-left: $header-logo-width;
+			background: url("/assets/yobi-logo.png") no-repeat 5px ($header-height - $header-logo-height)/2;
+			@include float-left;
+			@include link-colors($header-logo-color, $header-logo-hover-color);
+			&:hover {
+				background: url("/assets/yobi-logo-hover.png") no-repeat 5px ($header-height - $header-logo-height)/2;
+			}
+		}
+	}
+	.search_box {
+		@include float-right;
+	}
+}
+
+nav {
+	ul, li {
+		@include float-left;
+	}
+	li a {
+		line-height: $header-height;
+		padding: 6px 10px;
+		margin: 0 10px 0 0;
+		font-weight: bold;
+		font-size: 0.9em;
+		@include link-colors($white, $black, $white, $white, $white);
+		&:hover {
+			background: $header-link-color;
+			@include border-radius(20px);
+		}
+	}
+	li a.active {
+		background: $header-link-color;
+		@include border-radius(20px);
+	}
+}
+
+form.search_box {
+	margin-top: $header-height/4;
+	margin-right: 5px;
+	input {
+		background: #fff;
+		padding: 6px 6px 6px 8px;
+		width: 120px;
+		border: solid 1px #bcbbbb;
+		outline: none;
+		@include border-radius(20px);
+		max-width: 150px;
+	}
+}
+ 
+footer {
+	background: $footer-background-color;
+	color: $footer-font-color;
+	margin-top: 30px;
+	font-weight: normal;
+	font-size: 0.9em;
+	line-height: 1.5em;
+	@include min-height($footer-height);
+	@include single-box-shadow($default-box-shadow-color, 0, 0, 2px);
+	a {
+		padding-bottom: 2px;
+		@include link-colors($footer-font-color, $footer-font-color, $footer-font-color, $footer-font-color, $footer-font-color);
+		&:hover {
+			border-bottom: $blue-dark dashed 1px;
+		}
+	}
+	.products {
+		@include float-left;
+		margin-right: 0 10px 0 -10px;
+		h6 a {
+			color: $orange;
+		}
+	}
+	.column {
+		padding: 20px 0;
+	}
+	p {
+		margin: 0;
+	}
+	h5 {
+		font-size: 1.1em;
+		font-weight: bold;
+		color: $header-link-color;
+		margin: 10px 0;
+	}
+	h6 {
+		font-size: 1em;
+		font-weight: bold;
+		margin: 10px 0;
+	}
+	li {
+		margin: 5px;
+	}
+	.site_info {
+		text-align: right;
+		h5 {
+			font-size: 1.2em;
+			font-weight: bold;
+			margin-bottom: 10px;
+			@include link-colors($header-logo-hover-color, $header-link-color);
+		}
+		hr {
+			border: 0px;
+			border-top: 1px solid $blue-dark;
+			margin: 5px 0;
+		}
+		p.small {
+			font-size: 0.8em;
+			a {
+				padding-bottom: 1px;
+				@include link-colors($blue-dark, $orange);
+			}
+		}
+		hr.small {
+			border: 0px;
+			border-top: 1px dashed lighten($footer-background-color, 10%);
+			margin: 2px 0 2px 100px;
+		}
+		.splitter {
+			height: 20px;
+		}
+	}
+}
+
+#sidebar {
+	margin-top: 10px;
+	h3 {
+		font-size: 1.1em;
+		font-weight: bold;
+		line-height: 1.1em;
+		color: $blue-dark;
+	}
+	.box {
+		margin: 0 5px 10px 5px;
+	}
+}
+
+.splitter {
+	height: 1px;
+	border-bottom: 1px dotted $gray-lighter;
+	margin: 10px;
+}
+
+.border {
+	border: 1px solid $gray-lighter;
+	@include border-radius;
+	padding: 15px;
+}
+
+.home_product {
+	h2 {
+		font-size: 1.2em;
+		font-weight: bold;
+		color: $blue-dark;
+		margin: 5px 0 0 0;
+		padding: 0;
+	}
+}
+
+.article {
+	font-size: 0.9em;
+	text-indent: 2em;
+	line-height: 1.5em;
+	margin: 5px;
+	p {
+		margin: 0;
+	}
+	h2, h3, h4, h5, h6 {
+		text-indent: 0;
+	}
+}
+
+.first_letter_big {
+	padding-top: 10px;
+	div:first-letter {
+		color: $orange;
+		font-size: 2em;
+		font-weight: bold;
+	}
+}
+
+/* #Images
+================================================== */
+.image_grid {
+	a {
+		margin-right: 8px;
+		img {
+			background: #fff;
+			padding: 5px;
+			margin-bottom: 5px;
+			border: 1px solid $gray-light;
+			-moz-box-shadow: 3px 3px 4px $gray;
+			-webkit-box-shadow: 3px 3px 4px $gray;
+			box-shadow: 3px 3px 4px $gray;			
+			filter:progid:DXImageTransform.Microsoft.Shadow(Strength=4,Direction=135,Color='#000000');
+		}
+	}
+}
+// tooltip plugin
+.tooltip {
+	z-index: 999;
+	display:none;
+	background:transparent url(/assets/tooltip/black_arrow.png);
+	font-size: 0.8em;
+	line-height: 1.3em;
+	height:70px;
+	width:160px;
+	padding:25px;
+	color:#fff;	
+}
+
+.tooltip.bottom {
+	background:url(/assets/tooltip/black_arrow_bottom.png);
+	padding-top:40px;
+	height:55px;
+}
+
+.tooltip.bottom {
+	background:url(/assets/tooltip/black_arrow_bottom.png);
+}
+
+.banner {
+	margin: 10px 5px 5px 5px;
+	img {
+		width: 930px;
+		@include border-radius;
+		@include single-box-shadow;
+	}
+}
+
+.breadcrumbs {
+	margin: 10px;
+	border: 1px solid #dedede;
+	@include border-radius;
+	height: 2.3em;
+	font-size: 0.8em;
+	font-family: "\5FAE\8F6F\96C5\9ED1", "\5B8B\4F53", 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	ul, li {
+		list-style-type:none;
+		padding:0;
+		margin:0;
+	}
+	li {
+		float:left;
+		line-height:2.3em;
+		padding-left:.75em;
+		color:#777;
+		a {
+			display: block;
+			padding: 0 15px 0 0;
+			background: url(/assets/crumbs.gif) no-repeat right center;
+			&:hover, &:focus {
+				text-decoration:none;
+			}
+		}
+	}
+}
+
+article, #product_content {
+	h2 {
+		font-size: 2.5em;
+		color: $blue-dark;
+		font-weight: bold;
+		padding: 10px 0 20px 20px;
+		line-height: 1.2em;
+		border-bottom: 1px dashed $gray-lighter;
+	}
+}
+
+#product_content {
+	.pull-left {
+		margin-left: -10px;
+	}
+	.detail {
+		font-size: 0.9em;
+		margin: 10px;
+		background: #eeeeee;
+		padding-bottom: 0;
+		@include single-box-shadow;
+		.number {
+			@include label;
+		}
+		.retail_price {
+			text-decoration: line-through;
+			color: $green;
+		}
+		.yobi_price {
+			font-size: 1.5em;
+			color: $red;
+		}
+		.discount_rate {
+			@include label($white, $orange);
+		}
+		.splitter {
+			height: 1px;
+			border-bottom: 1px dashed $gray;
+			margin: 3px 3px 20px 3px;
+		}
+		.detail_property {
+			font-size: 0.9em;
+			li { line-height: 0.5em; }
+		}
+		.property {
+			@include label(#222222, #cccccc);
+			margin-right: 5px;
+		}
+	}
+	.tips {
+		margin: 5px;
+		font-size: 0.9em;
+		color: $blue;
+	}
+	.image_grid {
+		margin-right: 50px;
+	}
+	.order {
+		padding: 30px;
+		text-align: center;
+		a {
+			margin: 0 5px;
+		}
+	}
+	.intro, .comments {
+		h4 {
+			font-size: 1em;
+			color: $blue-dark;
+			margin: 10px 0 20px 0;
+			border-bottom: 1px dotted $gray-light;
+		}
+	}
+}
+
+#article_list_content {
+	h2 {
+		font-size: 1.5em;
+		color: $blue-dark;
+		font-weight: bold;
+		padding: 10px 0 10px 20px;
+		line-height: 1.2em;
+	}
+	h3 {
+		font-size: 1.2em;
+		font-weight: bold;
+	}
+	p {
+		font-size: 1em;
+		text-indent: 2em;
+		line-height: 1.2em;
+	}
+	.more {
+		width: 100%;
+		height: 40px;
+		.btn {
+			@include float-right;
+			margin-right: 50px;
+		}
+	}
+}
+
+#product_list_content {
+	h2 {
+		font-size: 1.5em;
+		color: $blue-dark;
+		font-weight: bold;
+		padding: 10px 0 0 20px;
+		line-height: 1.2em;
+	}
+	.category_img {
+		margin: 0 25px;
+		img {
+			width: 660px;
+			@include border-radius;
+			@include single-box-shadow;
+		}
+	}
+	.image_grid {
+		padding: 0 10px 10px 20px;
+		a img {
+			margin: 8px 5px;
+		}
+	}
+}
+
+// Hack for IE
+// -------------------------------
+.oldie {
+	.header {
+		border-bottom: 1px solid $oldie-box-shadow-color;
+	}
+	.footer {
+		border-top: 1px solid $oldie-box-shadow-color;
+	}
+	.banner {
+		img {
+			@include pie;
+		}
+	}
+	.image_grid {
+		a {
+			margin-right: 3px;
+		}
+	}
+	#product_list_content .image_grid {
+		a img {
+			margin-right: 3px;
+		}
+	}
+}
+
+.ie6 {
+	.header .column {
+	  height: $header-height;
+	}
+	.tooltip {
+		background-image:url(/assets/tooltip/black_arrow.gif);
+	}
+	.tooltip.bottom {
+		background:url(/assets/tooltip/black_arrow_bottom.gif);
+	}
+	#article_list_content .btn {
+		color: $white;
+	}
+}

@@ -2,10 +2,14 @@ Yobi2::Application.routes.draw do
   #get \"users\/show\"
 
   root :to => "home#index"
+  get '/article' => "home#article_detail", :as => :article
+  get '/article_list' => "home#article_list", :as => :article_list
+  get '/product' => "home#product_detail", :as => :product
+  get '/product_list' => "home#product_list", :as => :product_list
+  get '/category' => "home#category", :as => :category
 
   devise_for :users
-  resources :users, :only => :show
-
+  get '/users/account' => "users#show", :as => :account
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
