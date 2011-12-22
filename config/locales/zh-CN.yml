@@ -203,26 +203,61 @@ zh-CN:
         
   activerecord:
     models:
-      user: "用户"
+      user: 用户
+      article: 文章
     attributes:
       user:
-        login: "用户名或邮箱"
-        name: "用户名"
-        email: "邮箱"
-        password: "密码"
-        password_confirmation: "确认密码"
-        current_password: "当前密码"
+        login: 用户名或邮箱
+        name: 用户名
+        email: 邮箱
+        password: 密码
+        password_confirmation: 确认密码
+        current_password: 当前密码
+      article:
+        title: 题目
+        url: 链接地址
+        content: 内容
               
   helpers:
     select:
-      prompt: "请选择"
+      prompt: 请选择
     submit:
-      create: "新增%{model}"
+      create: "创建%{model}"
       update: "更新%{model}"
       submit: "储存%{model}"
     
+  actions:
+    simple:
+      new: 添加
+      edit: 编辑
+      delete: 删除
+      confirm: 你确定吗？
+    named:    
+      new: "添加%{model}"
+      edit: "编辑%{model}"
+      delete: "删除%{model}"
+      management: "%{model}管理"
+  
+  flash:
+    actions:
+      create:
+        notice: "%{resource_name}创建成功"
+      update:
+        notice: "%{resource_name}更新成功"
+      destroy:
+        notice: "%{resource_name}成功删除"
+        alert: "%{resource_name}不能被删除"
+    errors:
+      not_found: "%{resource_name}没有找到"
+  
   user:
     sign_up: 注册
     sign_in: 登陆
     sign_out: 退出
     edit_password: 更改密码
+    unauthorized: 只允许管理员进入！
+    
+  yobi:
+    site_title: 友比财务商城
+    admin_title: 友比财务商城后台管理
+    home: 首页

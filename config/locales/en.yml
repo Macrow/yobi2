@@ -221,6 +221,7 @@ en:
   activerecord:
     models:
       user: User
+      article: Article
     attributes:
       user:
         login: Name or Email
@@ -229,9 +230,42 @@ en:
         password: Password
         password_confirmation: Password Confirmation
         current_password: Current Password
+      article:
+        title: Title
+        url: URL
+        content: Content
+
+  actions:
+    simple:
+      new: New
+      edit: Edit
+      delete: Delete
+      confirm: Are you sure?
+    named:
+      new: "New %{model}"
+      edit: "Edit %{model}"
+      delete: "Delete %{model}"
+      management: "%{model} Management"
+
+  flash:
+    actions:
+      create:
+        notice: "%{resource_name} was successfully created."
+      update:
+        notice: "%{resource_name} was successfully updated."
+      destroy:
+        notice: "%{resource_name} was successfully destroyed."
+        alert: "%{resource_name} could not be destroyed."
+    errors:
+      not_found: "%{resource_name} not found."
 
   user:
     sign_up: Sign up
     sign_in: Sign in
     sign_out: Sign out
     edit_password: Edit password
+    unauthorized: Administrator Only !
+  yobi:
+    site_title: YOBI Mall
+    admin_title: YOBI Administration
+    home: Home

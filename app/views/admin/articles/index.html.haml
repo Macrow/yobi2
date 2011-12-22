@@ -1,0 +1,18 @@
+%h2= t("activerecord.models.article")
+#article_list
+  %table.bordered-table.zebra-striped
+    %thead
+      %tr
+        %th #
+        %th= t("activerecord.attributes.article.title")
+        %th= t("activerecord.attributes.article.url") 
+        %th= t("actions.named.management", :model => t("activerecord.models.article")) 
+    %tbody
+      - @articles.each_with_index do |article, index|
+        %tr
+          %td= index + 1
+          %td= link_to article.title, [:admin, article]
+          %td= article.url
+          %td
+            = link_to content_tag(:span, t("actions.simple.edit"), :class => "label notice"), edit_admin_article_path(article)
+            = link_to content_tag(:span, t("actions.simple.delete"), :class => "label important"), [:admin, article], :method => :delete, :confirm => t("actions.simple.confirm")

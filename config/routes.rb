@@ -1,5 +1,7 @@
 Yobi2::Application.routes.draw do
-  #get \"users\/show\"
+
+
+  get "articles/show"
 
   root :to => "home#index"
   get '/article' => "home#article_detail", :as => :article
@@ -10,6 +12,13 @@ Yobi2::Application.routes.draw do
 
   devise_for :users
   get '/users/account' => "users#show", :as => :account
+  
+  get '/articles/:url' => "articles#show", :as => :article_url
+  
+  namespace :admin do
+    root :to => "home#index"
+    resources :articles
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

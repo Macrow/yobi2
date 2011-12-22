@@ -1,3 +1,4 @@
+# encoding: utf-8
 Given /^I am not logged in$/ do
   visit "/users/sign_out"
 end
@@ -41,7 +42,7 @@ When /^I go to the sign in page$/ do
 end
 
 When /^I sign in with email "([^"]*)" and password "([^"]*)"$/ do |email, password|
-  fill_in(I18n.t("activerecord.attributes.user.email"), :with => email)
+  fill_in(I18n.t("activerecord.attributes.user.login"), :with => email)
   fill_in(I18n.t("activerecord.attributes.user.password"), :with => password)
   click_button I18n.t("user.sign_in")
 end
@@ -112,4 +113,37 @@ end
 Then /^I should see user named baz$/ do
   visit '/users/account'
   page.should have_content("baz")
+end
+
+When /^I sign in with name "([^"]*)" and password "([^"]*)"$/ do |name, password|
+  fill_in(I18n.t("activerecord.attributes.user.login"), :with => name)
+  fill_in(I18n.t("activerecord.attributes.user.password"), :with => password)
+  click_button I18n.t("user.sign_in")
+end
+
+Given /^有一名管理员，邮箱为"([^"]*)"密码为"([^"]*)"$/ do |email, password|
+  admin = User.create!({:name => "admin", :email => email, :password => password, :is_admin => true}, :as => :admin)
+  admin.should_not be_nil
+  admin.is_admin.should be_true
+end
+
+When /^在前台用"([^"]*)"和"([^"]*)"登录后，我进入后台管理$/ do |email, password|
+  visit '/users/account'
+  fill_in(I18n.t("activerecord.attributes.user.login"), :with => email)
+  fill_in(I18n.t("activerecord.attributes.user.password"), :with => password)
+  click_button I18n.t("user.sign_in")
+  page.should have_content(I18n.t("devise.sessions.signed_in"))
+  visit '/admin'
+end
+
+Then /^我应当看到后台管理的欢迎界面$/ do
+  page.should have_content(I18n.t("yobi.admin_title"))
+end
+
+Given /^有一名普通用户，邮箱为"([^"]*)"密码为"([^"]*)"$/ do |email, password|
+  User.create!(:name => "user", :email => email, :password => password).should_not be_nil
+end
+
+Then /^我应当看到你不是管理员，不能进入后台管理的消息提示$/ do
+  page.should have_content(I18n.t("user.unauthorized"))
 end

@@ -30,3 +30,16 @@ Feature: Sign in
       And I should be signed in
       When I return next time
       Then I should be already signed in
+    
+    Scenario: User signs in successfully with name
+      Given I am not logged in
+      And I am a user named "foo" with an email "user@test.com" and password "please"
+      When I go to the sign in page
+      And I sign in with name "foo" and password "please"
+      Then I should see signed in successful message
+      And I should be signed in
+      When I return next time
+      Then I should be already signed in
+    
+    
+    

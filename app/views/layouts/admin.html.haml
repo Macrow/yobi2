@@ -1,0 +1,31 @@
+!!! 5
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %title Yobi2 admin UI
+    /[if lt IE 9]
+      %script{:src => "http://html5shim.googlecode.com/svn/trunk/html5.js"}
+    = stylesheet_link_tag "admin"
+    = javascript_include_tag "admin"
+    = include_kindeditor_if_needed
+    = csrf_meta_tags
+  %body
+    .topbar
+      .topbar-inner
+        .container-fluid
+          %a.brand{:href => "#"}
+            = t("yobi.admin_title")
+          = render "admin/shared/topbar"
+          %p.pull-right
+            Logged in as
+            %a{:href => "#"} username
+    .container-fluid
+      .sidebar
+        .well
+          = render "admin/#{controller.controller_name}/sidebar"
+      .content
+        - flash.each do |key,msg|
+          = content_tag :div, link_to("×", "#", :class => "close") + content_tag(:p, msg), :class => "alert-message #{key}"
+        = yield
+        %footer
+        %p &copy; Company 2011

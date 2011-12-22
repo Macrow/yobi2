@@ -6,6 +6,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require slides.min.jquery
 //= require jquery.tools.min
 //= require jquery.lightbox-0.5.min

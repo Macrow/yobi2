@@ -10,6 +10,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.1.1'
   gem 'uglifier', '>= 1.0.3'
 	gem 'compass', '~> 0.12.alpha'
+	gem 'twitter-bootstrap-rails'
 end
 
 gem 'jquery-rails'
@@ -21,6 +22,11 @@ end
 gem "haml", ">= 3.1.2"
 gem "haml-rails", ">= 0.3.4"
 gem "devise", ">= 1.5.0"
+gem "inherited_resources"
+gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
+gem "stringex"
+gem "carrierwave"
+gem "rails_kindeditor"
 
 gem "rspec-rails", ">= 2.8.0.rc1", :group => [:development, :test]
 

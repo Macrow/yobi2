@@ -5,8 +5,8 @@
 .column.grid_6
   %h2 Sign in
   = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-    = f.label :email
-    = f.email_field :email, :class => "grid_4"
+    = f.label :login
+    = f.text_field :login, :class => "grid_4"
     = f.label :password
     = f.password_field :password, :class => "grid_4"
     - if devise_mapping.rememberable?
