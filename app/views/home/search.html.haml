@@ -1,0 +1,14 @@
+.column.grid_8
+  #search_list_content
+    %h2= "#{t("actions.simple.search")}: \"#{params[:search][:name_contains]}\""
+    - if @products.nil?
+      = t("yobi.search_empty")
+    - else
+      - @products.each do |product|
+        .splitter
+        .product
+          .image_grid= link_to image_tag(product.thumb_image), product_url_path(product.url)
+          %h3= link_to product.name, product_url_path(product.url)
+.column.grid_4
+  #sidebar.border
+    = render :partial => "shared/tag_cloud", :object => @tags

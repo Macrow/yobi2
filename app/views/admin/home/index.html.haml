@@ -1,4 +1,15 @@
-%h2 Welcom
-%p modified by Macrow
-%p
-  %a.btn{:href => "#"} View details &raquo;
+%h2= t("yobi.welcome")
+%table.bordered-table.zebra-striped
+  %thead
+    %tr
+      %th{:width => "5%"} #
+      %th{:width => "15%"}= t("yobi.type")
+      %th= t("yobi.type_count")
+      %th{:width => "10%"}= t("yobi.type_count")
+  %tbody
+    - @names.each_with_index do |name, index|
+      %tr
+        %td= index + 1
+        %td= t("activerecord.models.#{name.tableize.singularize}")
+        %td= display_bar(@counts.max, @counts[index])
+        %td= @counts[index]

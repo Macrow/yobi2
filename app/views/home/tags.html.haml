@@ -1,0 +1,16 @@
+.column.grid_8
+  #tag_list_content
+    %h2= "#{t('yobi.tag')}: #{params[:tag]}"
+    - @items.each do |item|
+      .splitter
+      - if item.is_a?(Article)
+        %h3= link_to item.title, article_url_path(item.url)
+        %p= truncate_html(item.content, :length => 120, :omission => '..', :word_boundary => true)
+        .more= link_to t("actions.simple.detail"), article_url_path(item.url), :class => "btn primary large"
+      - elsif item.is_a?(Product)
+        .product
+          .image_grid= link_to image_tag(item.thumb_image), product_url_path(item.url)
+          %h3= link_to item.name, product_url_path(item.url)
+.column.grid_4
+  #sidebar.border
+    = render :partial => "shared/tag_cloud", :object => @tags

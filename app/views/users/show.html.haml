@@ -1,8 +1,7 @@
-%p
-  User: #{@user.name}
-%p
-  Email: #{@user.email if @user.email}
-%p
-  = link_to t("user.edit_password"), edit_user_registration_path
-%p
-  = link_to t("user.sign_out"), destroy_user_session_path, :method => :delete
+#user_center
+  .column.grid_12
+    %p= "#{t("activerecord.attributes.user.name")}: #{@user.name}"
+    %p= "#{t("activerecord.attributes.user.email")}: #{@user.email}"
+    %p
+      = link_to t("user.edit_password"), edit_user_registration_path, :class => "btn primary"
+      = link_to t("user.sign_out"), destroy_user_session_path, :method => :delete, :class => "btn"

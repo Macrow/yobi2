@@ -1,5 +1,19 @@
 zh-CN: 
   devise: 
+    label:
+      sign_in: 登陆
+      sign_up: 注册
+      resend: 重新发送确认邮件
+      change_password: 更改密码
+      new_password: 新密码
+      confirm_new_password: 确认新密码
+      send_reset: 发送重置密码邮件
+      forgot: 忘记密码?
+      cancel_account: 删除账户
+      remember_me: 记住登陆
+      forgot: 忘记密码?
+      not_receive_confirmation: 没有收到确认信息?
+      not_receive_unlock: 没有收到解锁信息?      
     confirmations: 
       confirmed: 帐号确认成功。您已经成功登录。
       new: 
@@ -7,7 +21,7 @@ zh-CN:
       send_instructions: 您会在几分钟内收到一封邮件，它将指引您完成帐号确认步骤。
     failure: 
       inactive: 你的帐号尚未激活。
-      invalid: 邮箱或密码有误。
+      invalid: 用户名/邮箱或密码有误。
       invalid_email: 邮箱格式错误。
       invalid_token: 验证信息不合法。
       locked: 您的帐号已锁定。

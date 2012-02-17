@@ -1,6 +1,6 @@
-%li= link_to "首 页", root_path, :class => "active"
-%li= link_to "关于友比", article_list_path
-%li= link_to "浏览产品", product_list_path
-%li= link_to "联系方式", category_path
-%li= link_to "常见问题", root_path
-%li= link_to "我的账户", account_path
+%li= link_to t("yobi.home"), root_path, :class => ("active" if controller_name == "home" && action_name == "index")
+%li= link_to t("yobi.about"), article_url_path("about"), :class => ("active" if controller_name == "articles" && action_name == "show" && params[:url] == "about")
+%li= link_to t("yobi.products"), categories_path, :class => ("active" if (controller_name == "categories" || controller_name == "products"))
+%li= link_to t("yobi.contacts"), article_url_path("contact"), :class => ("active" if controller_name == "articles" && action_name == "show" && params[:url] == "contact")
+%li= link_to t("yobi.faq"), article_url_path("faq"), :class => ("active" if controller_name == "articles" && action_name == "show" && params[:url] == "faq")
+%li= link_to t("yobi.account"), account_path, :class => ("active" if controller_name =~ /users|sessions|confirmations|passwords|registrations|unlocks/i )

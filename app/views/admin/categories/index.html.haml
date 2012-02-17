@@ -1,0 +1,4 @@
+- if @categories.present?
+	%ul#categories= suckerfish @categories
+- else
+	%h3= t("activerecord.models.category")

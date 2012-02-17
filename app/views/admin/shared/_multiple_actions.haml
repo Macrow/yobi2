@@ -1,0 +1,6 @@
+.actions
+  = f.button :submit, :class => 'primary', :disable_with => t("actions.simple.wait")
+  = f.button :submit, t("actions.simple.save_and_edit"), :class => "btn success"
+  = f.button :submit, t("actions.simple.save_and_add_another"), :class => "btn success"
+  = button_tag t("actions.simple.reset"), :type => :reset, :class => "btn danger"
+  = link_to t("actions.simple.cancel"), [:admin, m.to_s.downcase.pluralize.to_sym], :class => "btn"

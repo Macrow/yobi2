@@ -1,0 +1,12 @@
+%h2= t("actions.named.delete", :model => t("activerecord.models.product"))
+.alert-message.error.fade.in{"data-alert" => "alert"}
+  %a.close{:href => "#"} ×
+  %p= t("flash.actions.confirm.notice")
+%h3= @product.name
+%h5= t("activerecord.models.image")
+#images= render :partial => "admin/product_images/image_show", :collection => @product.images, :as => :image
+%h5= t("activerecord.models.property")
+#images= render @product.properties
+.actions
+  = link_to t("actions.simple.destroy_confirm"), [:admin, @product], :method => :delete, :class => "btn danger"
+  = link_to t("actions.simple.cancel"), admin_products_path, :class => "btn"

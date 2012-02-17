@@ -1,0 +1,36 @@
+%h2= t("activerecord.models.product")
+.search.pull-right
+  = form_for @search, :url => admin_products_path, :html => {:method => :get} do |f|
+    = "#{t('actions.simple.search')} #{t('activerecord.attributes.product.name')}"
+    = f.text_field :name_contains
+#product_list
+  %table.bordered-table.zebra-striped
+    %thead
+      %tr
+        %th #
+        %th= t("activerecord.attributes.product.name")
+        %th= t("activerecord.models.category")
+        %th= t("activerecord.attributes.product.url")
+        %th= t("activerecord.attributes.product.price_yobi")
+        %th= t("activerecord.attributes.product.is_elite")
+        %th= t("actions.named.management", :model => t("activerecord.models.product")) 
+    %tbody
+      - @products.each_with_index do |product, index|
+        %tr
+          %td= index + 1
+          %td= link_to product.name, product_url_path(product.url), :target => "_blank"
+          %td
+            - if product.category
+              = product.category.name
+            - else
+              .label= t("actions.simple.removed")
+          %td= product.url
+          %td= show_price(product.price_yobi)
+          %td
+            - if product.is_elite
+              = content_tag(:span, t("activerecord.attributes.product.is_elite"), :class => "label")
+          %td
+            = link_to content_tag(:span, t("actions.simple.view"), :class => "label success"), product_url_path(product.url), :target => "_blank"
+            = link_to content_tag(:span, t("actions.simple.edit"), :class => "label notice"), edit_admin_product_path(product)
+            = link_to content_tag(:span, t("actions.simple.delete"), :class => "label important"), destroy_confirm_admin_product_path(product)
+= will_paginate @products

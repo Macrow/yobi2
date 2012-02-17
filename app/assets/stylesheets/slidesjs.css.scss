@@ -63,32 +63,33 @@
 /*
 	Pagination
 */
+#slides {
+	.pagination {
+		margin: 5px -15px 0 0;
+		width:100px;
+		@include float-right;
+	}
 
-.pagination {
-	margin: 5px -40px 0 0;
-	width:100px;
-	@include float-right;
-}
+	.pagination li {
+		float:left;
+		margin:0 1px;
+		list-style:none;
+	}
 
-.pagination li {
-	float:left;
-	margin:0 1px;
-	list-style:none;
-}
+	.pagination li a {
+		display:block;
+		width:12px;
+		height:0;
+		padding-top:12px;
+		background-image:url("slidesjs/pagination.gif");
+		background-position:0 0;
+		float:left;
+		overflow:hidden;
+	}
 
-.pagination li a {
-	display:block;
-	width:12px;
-	height:0;
-	padding-top:12px;
-	background-image:url("slidesjs/pagination.gif");
-	background-position:0 0;
-	float:left;
-	overflow:hidden;
-}
-
-.pagination li.current a {
-	background-position:0 -12px;
+	.pagination li.current a {
+		background-position:0 -12px;
+	}
 }
 
 /*

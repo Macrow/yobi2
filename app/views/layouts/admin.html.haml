@@ -15,17 +15,18 @@
         .container-fluid
           %a.brand{:href => "#"}
             = t("yobi.admin_title")
-          = render "admin/shared/topbar"
+          = topbar
           %p.pull-right
-            Logged in as
-            %a{:href => "#"} username
+            Welcome 
+            = link_to current_user.name, account_path, :target => "_blank"
+            = link_to content_tag(:span, t("user.sign_out"), :class => "label warning"), destroy_user_session_path, :method => :delete
     .container-fluid
       .sidebar
         .well
           = render "admin/#{controller.controller_name}/sidebar"
       .content
         - flash.each do |key,msg|
-          = content_tag :div, link_to("×", "#", :class => "close") + content_tag(:p, msg), :class => "alert-message #{key}"
+          = content_tag :div, link_to("×", "#", :class => "close") + content_tag(:p, msg), :class => "alert-message #{key} fade in", "data-alert" => "alert"
         = yield
         %footer
-        %p &copy; Company 2011
+        %p= ("&copy; " + link_to("www.51yobi.com", root_path, :target => "_blank") + " 2011 - #{Time.now.strftime("%Y")}").html_safe

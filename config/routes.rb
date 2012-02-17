@@ -1,23 +1,36 @@
 Yobi2::Application.routes.draw do
 
-
-  get "articles/show"
-
   root :to => "home#index"
-  get '/article' => "home#article_detail", :as => :article
-  get '/article_list' => "home#article_list", :as => :article_list
-  get '/product' => "home#product_detail", :as => :product
-  get '/product_list' => "home#product_list", :as => :product_list
-  get '/category' => "home#category", :as => :category
 
   devise_for :users
-  get '/users/account' => "users#show", :as => :account
-  
+  get '/users/account' => "users#show", :as => :account  
   get '/articles/:url' => "articles#show", :as => :article_url
+  get '/products/:url' => "products#show", :as => :product_url
+  get '/categories/:url' => "categories#show", :as => :category_url
+  get "/search" => "home#search", :as => :search
+  get '/articles' => "articles#index", :as => :articles
+  get '/categories' => "categories#index", :as => :categories
+  get '/tags/:tag' => "home#tags", :as => :tags
   
   namespace :admin do
     root :to => "home#index"
-    resources :articles
+    resources :articles do
+      resources :article_images, :as => :images, :only => [:create, :update, :destroy]
+    end
+    resources :products do
+      get 'destroy_confirm', :on => :member
+      resources :product_images, :as => :images, :only => [:create, :update, :destroy]
+    end
+    resources :categories do
+    	post :sort, :on => :collection
+    	resources :category_images, :as => :images, :only => [:create, :update, :destroy]
+    end
+    resources :plists, :except => :show
+    resources :product_images, :as => :pimages, :only => [:index, :destroy]
+    resources :category_images, :as => :cimages, :only => [:index, :destroy]
+    resources :article_images, :as => :aimages, :only => [:index, :destroy]
+    resources :slides, :except => :show
+    resources :users
   end
 
   # The priority is based upon order of creation:

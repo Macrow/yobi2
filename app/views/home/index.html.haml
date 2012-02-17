@@ -1,36 +1,28 @@
-.column.grid_12
-  = render "slidesjs"
 .column.grid_3
   #sidebar
     .box.article
-      %h3 友比快讯
-      %p
-        我们每天都会从几十万新上传的照片中，为您精选一批有意思的照片。
-      %p
-        每张照片的背后都有一个故事，它们可能关于爱情，可能关于亲情，也可能关于友情；它们可能是你熟悉的故乡，也可能是你从未听说过的地方；它们可能带给你欢乐，也可能带给你感动。
-      %p
-        不管如何，我们期待你跟我们，跟大家一起分享...
+      %h3= t("yobi.news")
+      - unless @lastest_article.nil?
+        = truncate_html(@lastest_article.content, :length => 150, :omission => '..', :word_boundary => true)
     .splitter
     .box
-      %h3 在线服务
+      %h3= t("yobi.online_service")
       %p= '<a target=blank href=http://wpa.qq.com/msgrd?V=1&Uin=1574864288&Site=www.51yobi.com&Menu=yes><img border="0" SRC=http://wpa.qq.com/pa?p=1:1574864288:12 alt="点击这里给我发消息"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a target=blank href=http://wpa.qq.com/msgrd?V=1&Uin=2364133372&Site=www.51yobi.com&Menu=yes><img border="0" SRC=http://wpa.qq.com/pa?p=1:2364133372:12 alt="点击这里给我发消息"></a>'.html_safe
     .splitter
     .box.article
-      %h3 联系方式
-      %br
-      公司地址：重庆市江北区建北四支路6号
-      %br
-      销售热线：15723291644 15723346799
+      %h3= t("yobi.contacts")
+      - unless @contact_article.nil?
+        = raw @contact_article.content
 .column.grid_9.home_product
-  %h2 热铆装订机
+  %h2= t("yobi.elite_products_1")
   .tooltip_container.image_grid
-    - (1..5).to_a.each do |i|
-      = link_to image_tag("/assets/no-pic.gif", :size => "115x115", :title => "热铆装订机<br/>价格：900<br/>性能优良，欢迎购买！")
-  %h2 财务套打账册
+    - @elite_products.each do |product|
+      = link_to image_tag(product.thumb_image, :title => "#{product.name}<br/>#{t("activerecord.attributes.product.sn")}: #{product.sn}<br/>#{t("activerecord.attributes.product.price_yobi")}: #{product.price_yobi}"), product_url_path(product.url)
+  %h2= t("yobi.elite_products_2")
   .tooltip_container.image_grid
-    - (1..5).to_a.each do |i|
-      = link_to image_tag("/assets/no-pic.gif", :size => "115x115", :title => "热铆装订机")
-  %h2 票据软件及耗材
+    - @elite_products.each do |product|
+      = link_to image_tag(product.thumb_image, :title => "#{product.name}<br/>#{t("activerecord.attributes.product.sn")}: #{product.sn}<br/>#{t("activerecord.attributes.product.price_yobi")}: #{product.price_yobi}"), product_url_path(product.url)
+  %h2= t("yobi.elite_products_3")
   .tooltip_container.image_grid
-    - (1..5).to_a.each do |i|
-      = link_to image_tag("/assets/no-pic.gif", :size => "115x115", :title => "热铆装订机")
+    - @elite_products.each do |product|
+      = link_to image_tag(product.thumb_image, :title => "#{product.name}<br/>#{t("activerecord.attributes.product.sn")}: #{product.sn}<br/>#{t("activerecord.attributes.product.price_yobi")}: #{product.price_yobi}"), product_url_path(product.url)

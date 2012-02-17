@@ -1,0 +1,5 @@
+.handle
+  = category.name
+  = link_to content_tag(:span, t("actions.simple.view"), :class => "label success"), category_url_path(category.url), :target => "_blank"
+  = link_to content_tag(:span, t("actions.simple.edit"), :class => "label warning"), edit_admin_category_path(category)
+  = link_to content_tag(:span, t("actions.simple.delete"), :class => "label important"), [:admin, category], :method => :delete, :confirm => t("actions.simple.confirm")

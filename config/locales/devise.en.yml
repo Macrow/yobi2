@@ -2,6 +2,20 @@
 
 en:
   devise:
+    label:
+      sign_in: Sign in
+      sign_up: Sign up
+      resend: Resend confirmation instructions
+      change_password: Change password
+      new_password: New password
+      confirm_new_password: Confirm new password
+      send_reset: Send me reset password instructions
+      forgot: Forgot your password?
+      cancel_account: Cancel my account
+      remember_me: Remember me
+      forgot: Forgot your password?
+      not_receive_confirmation: Didn't receive confirmation instructions?
+      not_receive_unlock: Didn't receive unlock instructions?
     failure:
       already_authenticated: 'You are already signed in.'
       unauthenticated: 'You need to sign in or sign up before continuing.'

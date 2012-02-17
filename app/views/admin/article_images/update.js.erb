@@ -1,0 +1,8 @@
+<% if @image.valid? %>
+  $("#image_<%=@image.id%>").replaceWith("<%= escape_javascript(render :partial => 'admin/article_images/image', :object => @image, :as => :image, :locals => { :article => @image.article }) %>");
+  <% unless @orgin_major_image.nil? %>
+    $("#image_<%=@orgin_major_image.id%>").replaceWith("<%= escape_javascript(render :partial => 'admin/article_images/image', :object => @orgin_major_image, :as => :image, :locals => { :article => @image.article }) %>");
+  <% end %>
+<% else %>
+  alert("<%= t("errors.genernal") %>");
+<% end %>

@@ -1,19 +1,34 @@
-class Article < ActiveRecord::Base
-  include ActionView::Helpers::TextHelper
-  
+class Article < ActiveRecord::Base  
   validates_presence_of :title
   validates_uniqueness_of :url
   
   default_scope order("created_at DESC")
   
-  before_save :verify_safe, :generate_url
+  has_many :images, :class_name => "ArticleImage", :dependent => :destroy
+  has_one :major_image, :class_name => "ArticleImage", :conditions => ["is_major = ?", true]
   
-  def self.string_to_url(str)
-    str.to_url
+  before_save :verify_safe
+  before_validation :generate_url
+  
+  acts_as_taggable
+  
+  def display_image
+    major_image.nil? ? "no-banner-pic-article.jpg" : major_image.image.url
+  end
+  
+  def thumb_image
+    major_image.nil? ? "no-pic.gif" : major_image.image.thumb.url
+  end
+  
+  def tags_text=(text)
+    self.tag_list = text.split(" ")
+  end
+  
+  def tags_text
+    self.tag_list.join(" ")
   end
 
-  private
-  
+  private  
   def verify_safe
     unless self.content.html_safe?
       self.content.gsub!(/<script.*?>.*?<\/script>/i, "")
@@ -22,9 +37,9 @@ class Article < ActiveRecord::Base
   
   def generate_url
     if self.url.blank?
-      self.url = self.title.to_url
+      self.url = self.title.to_url.to(Yobi::URL_COUNT)
     else
-      self.url = self.url.to_url
+      self.url = self.url.to_url.to(Yobi::URL_COUNT)
     end
   end
 end

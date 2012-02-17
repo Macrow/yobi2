@@ -1,0 +1,15 @@
+.column.grid_8
+  #article_list_content
+    %h2= t("yobi.news")
+    - @articles.each do |article|
+      .splitter
+      %h3= link_to article.title, article_url_path(article.url)
+      %p= truncate_html(article.content, :length => 250, :omission => '..', :word_boundary => true)
+      .more= link_to t("actions.simple.detail"), article_url_path(article.url), :class => "btn primary large"
+  #clean-pagination.pull-right= will_paginate @articles
+.column.grid_4
+  #sidebar.border
+    = render :partial => "shared/tag_cloud", :object => @tags
+    .splitter
+    %h3= t("yobi.last_update")
+    = render :partial => "shared/sidebar_article", :collection => @lastest_articles

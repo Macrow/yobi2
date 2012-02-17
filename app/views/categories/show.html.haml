@@ -1,0 +1,17 @@
+.column.grid_8
+  #product_list_content
+    - @category.children.each do |c|
+      %h2= link_to c.name, category_url_path(c.url)
+      .category_img= link_to image_tag(c.thumb_image), category_url_path(c.url)
+    - if @category.children.empty? || (!@products.empty?)
+      %h2= @category.name
+      .tooltip_container.image_grid
+        - @products.each do |p|      
+          = link_to image_tag(p.thumb_image, :title => "#{p.name}<br/>#{t("activerecord.attributes.product.sn")}: #{p.sn}<br/>#{t("activerecord.attributes.product.price_yobi")}: #{show_price(p.price_yobi)}<br/>#{t("activerecord.attributes.product.price_retail")}: #{show_price(p.price_retail)}"), product_url_path(p.url)
+      #clean-pagination.pull-right= will_paginate @products
+.column.grid_4
+  #sidebar.border
+    = render :partial => "shared/tag_cloud", :object => @tags
+    .splitter
+    %h3= t("yobi.elite_product")
+    = render :partial => "shared/sidebar_product", :collection => @elite_products

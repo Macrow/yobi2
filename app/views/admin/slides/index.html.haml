@@ -1,0 +1,26 @@
+%h2= t("activerecord.models.slide")
+#slide_list
+  %table.bordered-table.zebra-striped
+    %thead
+      %tr
+        %th #
+        %th= t("activerecord.attributes.slide.image")
+        %th= t("activerecord.attributes.slide.title")
+        %th= t("activerecord.attributes.slide.url")
+        %th= t("activerecord.attributes.slide.caption") 
+        %th= t("activerecord.attributes.slide.is_hide")
+        %th= t("actions.named.management", :model => t("activerecord.models.slide")) 
+    %tbody
+      - @slides.each_with_index do |slide, index|
+        %tr
+          %td= index + 1
+          %td.media-grid= link_to image_tag(slide.thumb_image), slide.display_image, :class => "lightbox"
+          %td= slide.title
+          %td= slide.url
+          %td= slide.caption
+          %td
+            - if slide.is_hide
+              = content_tag(:span, t("activerecord.attributes.slide.is_hide"), :class => "label")
+          %td
+            = link_to content_tag(:span, t("actions.simple.edit"), :class => "label notice"), edit_admin_slide_path(slide)
+            = link_to content_tag(:span, t("actions.simple.delete"), :class => "label important"), [:admin, slide], :method => :delete, :confirm => t("actions.simple.confirm")

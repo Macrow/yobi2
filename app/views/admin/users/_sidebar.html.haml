@@ -1,0 +1,4 @@
+%h3= t("actions.named.management", :model => t("activerecord.models.user"))
+%ul
+  %li= link_to t("actions.named.all", :model => t("activerecord.models.user")), admin_users_path
+  %li= link_to t("actions.named.new", :model => t("activerecord.models.user")), new_admin_user_path

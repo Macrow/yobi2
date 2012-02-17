@@ -120,7 +120,7 @@ footer {
 	}
 	.products {
 		@include float-left;
-		margin-right: 0 10px 0 -10px;
+		margin-right: 5px;
 		h6 a {
 			color: $orange;
 		}
@@ -178,14 +178,23 @@ footer {
 
 #sidebar {
 	margin-top: 10px;
+	font-size: 0.9em;
 	h3 {
-		font-size: 1.1em;
+		font-size: 1.2em;
 		font-weight: bold;
 		line-height: 1.1em;
 		color: $blue-dark;
 	}
+	h4 {
+		font-size: 1.1em;
+		font-weight: bold;
+		line-height: 1.5em;
+	}
 	.box {
 		margin: 0 5px 10px 5px;
+	}
+	li {
+		font-size: 0.9em;
 	}
 }
 
@@ -209,6 +218,11 @@ footer {
 		margin: 5px 0 0 0;
 		padding: 0;
 	}
+}
+
+.description {
+	line-height: 1.4em;
+	margin: 10px;
 }
 
 .article {
@@ -368,7 +382,7 @@ article, #product_content {
 		margin-right: 50px;
 	}
 	.order {
-		padding: 30px;
+		padding: 30px 20px;
 		text-align: center;
 		a {
 			margin: 0 5px;
@@ -422,7 +436,8 @@ article, #product_content {
 	.category_img {
 		margin: 0 25px;
 		img {
-			width: 660px;
+			width: 580px;
+			height: 120px;
 			@include border-radius;
 			@include single-box-shadow;
 		}
@@ -430,9 +445,131 @@ article, #product_content {
 	.image_grid {
 		padding: 0 10px 10px 20px;
 		a img {
-			margin: 8px 5px;
+			margin: 8px 3px;
 		}
 	}
+}
+
+#tag_list_content, #search_list_content {
+	.product {
+		@include min-height(130px);
+	}
+	.image_grid {
+		@include float-left;
+	}
+	.more {
+		width: 100%;
+		height: 40px;
+		.btn {
+			@include float-right;
+			margin-right: 50px;
+		}
+	}
+}
+
+#categories_list {
+	.category {
+		@include float-left;
+	}
+	h2 {
+		font-size: 1.5em;
+		color: $blue-dark;
+		font-weight: bold;
+		padding: 10px 0 0 20px;
+		line-height: 1.2em;
+	}
+	.category_img {
+		margin: 0 25px;
+		img {
+			width: 420px;
+			height: 100px;
+			@include border-radius;
+			@include single-box-shadow;
+		}
+	}
+}
+
+#user_center {
+	margin: 10px;
+	padding: 10px;
+}
+
+.flash {
+	font-size: 13px;
+}
+
+#error_explanation {
+	font-size: 0.9em;
+	background: $gray-lighter;
+	border: 1px solid $gray;
+	padding: 0 10px;
+	margin: 10px;
+	h2 {
+		font-size: 1.1em;
+		font-weight: bold;
+	}
+	ul {
+		list-style: disc;
+		li {
+			margin-left: 30px;
+			line-height: 0.5em;
+		}
+	}
+}
+
+#clean-pagination {
+	.pagination {
+		font-size: 0.9em;
+	  height: 36px;
+	  margin: 18px 0;
+	}
+	.pagination ul {
+	  float: left;
+	  margin: 0;
+	  border: 1px solid #ddd;
+	  border: 1px solid rgba(0, 0, 0, 0.15);
+	  -webkit-border-radius: 3px;
+	  -moz-border-radius: 3px;
+	  border-radius: 3px;
+	  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+	  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+	  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+	}
+	.pagination li {
+	  display: inline;
+	}
+	.pagination a {
+	  float: left;
+	  padding: 0 14px;
+	  line-height: 34px;
+	  border-right: 1px solid;
+	  border-right-color: #ddd;
+	  border-right-color: rgba(0, 0, 0, 0.15);
+	  *border-right-color: #ddd;
+	  /* IE6-7 */
+
+	  text-decoration: none;
+	}
+	.pagination a:hover, .pagination .active a {
+	  background-color: #c7eefe;
+	}
+	.pagination .disabled a, .pagination .disabled a:hover {
+	  background-color: transparent;
+	  color: #bfbfbf;
+	}
+	.pagination .next a {
+	  border: 0;
+	}
+}
+
+.float-left {
+	@include float-left;
+	margin-right: 3px;
+}
+
+.devise {
+	font-size: 0.9em;
+	line-height: 1.5em;
 }
 
 // Hack for IE

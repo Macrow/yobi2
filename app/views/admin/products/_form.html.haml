@@ -1,0 +1,31 @@
+= simple_form_for [:admin, @product], :wrapper => :inline do |f|
+  - if f.error_notification
+    .alert-message.warning.fade.in{"data-alert" => "alert"}
+      %a.close{:href => "#"} ×
+      %p= f.error_notification
+  = field_set_tag t("activerecord.models.product") do
+    = f.input :name, :input_html => { :maxlength => "#{Yobi::TEXT_MAX_LENGTH}", :class => "span10" }, :hint => t("hint.title")
+    = f.input :url, :input_html => { :maxlength => "#{Yobi::TEXT_MAX_LENGTH}", :class => "span10" }, :hint => t("hint.url")
+    = f.input :tags_text, :input_html => { :class => "span10" }, :hint => t("hint.tags")
+    = f.input :tags do
+      .tag_cloud
+        - unless @tags.nil?
+          - tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
+            = link_to tag.name, "#", :onclick => "$('#product_tags_text').val($('#product_tags_text').val() + ' #{tag.name}')", :class => css_class
+    = f.association :category, :collection => @categories, :label => t("activerecord.models.category"), :prompt => t("actions.simple.choose_category")
+    = f.input :sn, :input_html => { :class => "span10" }, :hint => t("hint.sn")
+    = f.input :is_elite, :hint => t("hint.elite")
+    = f.input :price_yobi, :input_html => { :class => "span10" }, :hint => t("hint.price_yobi")
+    = f.input :price_retail, :input_html => { :class => "span10" }, :hint => t("hint.price_retail")
+    = f.input :properties, :label => t("activerecord.models.properties") do
+      #properties
+        = f.simple_fields_for :properties do |property|
+          = render 'property_fields', :f => property
+        = link_to_add_association t("actions.named.new", :model => t("activerecord.models.property")), f, :properties, :class => 'btn', :html_options => { "data-association-insertion-method" => "after"}
+    - if controller.action_name == "edit"
+      = f.input :images do
+        #images= render :partial => "admin/product_images/image", :collection => @product.images, :as => :image, :locals => { :product => @product }
+      = f.input :images, :label => false do
+        #uploadify= image_uploadify("#uploadify", admin_product_images_path(@product), "image", t("actions.simple.upload"))
+    = f.input :description, :input_html => { :class => "span10", :id => "kindeditor_id" }
+  = render "admin/shared/multiple_actions", :f => f, :m => :product

@@ -1,0 +1,23 @@
+%h2= t("activerecord.models.image")
+#image_list
+  %table.bordered-table.zebra-striped
+    %thead
+      %tr
+        %th #
+        %th= t("activerecord.models.image")
+        %th= t("activerecord.attributes.image.is_major")
+        %th= t("actions.named.management", :model => t("activerecord.models.image"))
+        %th= t("activerecord.models.category")
+        %th= t("actions.named.management", :model => t("activerecord.models.category"))
+    %tbody
+      - @images.each_with_index do |image, index|
+        %tr
+          %td= index + 1
+          %td.media-grid= link_to image_tag(image.image.thumb.icon.url), image.image.url, :class => "lightbox"
+          %td
+            - if image.is_major
+              = content_tag(:span, t("activerecord.attributes.image.is_major"), :class => "label")
+          %td
+            = link_to content_tag(:span, t("actions.simple.delete"), :class => "label important"), admin_cimage_path(image), :method => :delete, :confirm => t("actions.simple.confirm")
+          %td= link_to image.category.name, category_url_path(image.category.url), :target => "_blank"
+          %td= link_to content_tag(:span, t("actions.simple.edit"), :class => "label notice"), edit_admin_category_path(image.category)

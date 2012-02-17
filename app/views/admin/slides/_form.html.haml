@@ -1,0 +1,13 @@
+= simple_form_for [:admin, @slide], :wrapper => :inline do |f|
+  - if f.error_notification
+    .alert-message.warning.fade.in{"data-alert" => "alert"}
+      %a.close{:href => "#"} ×
+      %p= f.error_notification
+  = field_set_tag t("activerecord.models.slide") do
+    = f.input :title, :input_html => { :maxlength => "#{Yobi::TEXT_MAX_LENGTH}", :class => "span10" }, :hint => t("hint.title")
+    = f.input :url, :input_html => { :maxlength => "#{Yobi::TEXT_MAX_LENGTH}", :class => "span10" }, :hint => t("hint.link")
+    = f.input :caption, :input_html => { :class => "span10" }, :hint => t("hint.caption")
+    = f.input :is_hide, :input_html => { :class => "span10" }, :hint => t("hint.hide")
+    = f.input :image, :as => :file, :hint => t("hint.slide_image")
+  = render "admin/shared/multiple_actions", :f => f, :m => :slide
+

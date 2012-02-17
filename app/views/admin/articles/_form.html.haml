@@ -4,10 +4,19 @@
       %a.close{:href => "#"} ×
       %p= f.error_notification
   = field_set_tag t("activerecord.models.article") do
-    = f.input :title, :input_html => { :class => "span8" }, :hint => "add your article title here"
-    = f.input :url, :input_html => { :class => "span8" }, :hint => "seo support"
+    = f.input :title, :input_html => { :maxlength => "#{Yobi::TEXT_MAX_LENGTH}", :class => "span10" }, :hint => t("hint.title")
+    = f.input :url, :input_html => { :maxlength => "#{Yobi::TEXT_MAX_LENGTH}", :class => "span10" }, :hint => t("hint.url")
+    = f.input :tags_text, :input_html => { :class => "span10" }, :hint => t("hint.tags")
+    = f.input :tags do
+      .tag_cloud
+        - unless @tags.nil?
+          - tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
+            = link_to tag.name, "#", :onclick => "$('#article_tags_text').val($('#article_tags_text').val() + ' #{tag.name}')", :class => css_class
+    - if controller.action_name == "edit"
+      = f.input :article_images do
+        #images= render :partial => "admin/article_images/image", :collection => @article.images, :as => :image, :locals => { :article => @article }
+      = f.input :article_images, :label => false, :hint => t("hint.slide_image") do
+        #uploadify= image_uploadify("#uploadify", admin_article_images_path(@article), "image", t("actions.simple.upload"))
     = f.input :content, :input_html => { :class => "span10", :id => "kindeditor_id" }
-  .actions
-    = f.button :submit, :class => 'primary'
-    = button_tag 'Cancel', :type => :reset, :class => "btn"
+  = render "admin/shared/multiple_actions", :f => f, :m => :article
 

@@ -1,11 +1,9 @@
 .row
   .column
-    %h1
-      = link_to "友比财务商城", root_path
+    %h1= link_to t("yobi.site_title"), root_path
   .column
     %nav
-      %ul
-        = render 'shared/navigation'
+      %ul= render 'shared/navigation'
   .column.pull-right
-    %form.search_box
-      %input{:type => "text", :value => "搜索产品...", :onfocus => "if (this.value == '搜索产品...') {this.value = '';}", :onblur => "if (this.value == '') {this.value = '搜索产品...';}"}
+    = form_for @search, :url => search_path, :html => {:class => "search_box"} do |f|
+      %span= f.text_field :name_contains, :value => t("yobi.search"), :onfocus => "if (this.value == '#{t("yobi.search")}') {this.value = '';}", :onblur => "if (this.value == '') {this.value = '#{t("yobi.search")}';}"

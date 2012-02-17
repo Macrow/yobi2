@@ -36,8 +36,8 @@ Then /^我应当看到发表成功的消息$/ do
 end
 
 Then /^我在前台打开地址为"([^"]*)"的文章，会看到"([^"]*)"的题目，会看到"([^"]*)"的内容$/ do |url, title, content|
-  url = Article.string_to_url(url)
-  visit "/articles/#{url}"
+  visit '/admin/articles'
+  find('#article_list').click_link(I18n.t("actions.simple.view"))
   page.should have_content(title)
   page.should have_content(content)
 end
@@ -70,9 +70,4 @@ end
 
 Then /^我应当看到删除成功的消息$/ do
   page.should have_content(I18n.t("flash.actions.destroy.notice", :resource_name => I18n.t("activerecord.models.article")))
-end
-
-Then /^我在前台打开地址为"([^"]*)"的文章，会看到不存在的404页面$/ do |url|
-  url = Article.string_to_url(url)
-  Article.find_by_url(url).should be_nil
 end

@@ -1,10 +1,6 @@
-%h3 Sidebar
+%h3= t("yobi.quick_links")
 %ul
-  %li
-    %a{:href => "#"} Link
-  %li
-    %a{:href => "#"} Link
-  %li
-    %a{:href => "#"} Link
-  %li
-    %a{:href => "#"} Link
+  %li= link_to t("actions.named.new", :model => t("activerecord.models.slide")), new_admin_slide_path
+  %li= link_to t("actions.named.new", :model => t("activerecord.models.article")), new_admin_article_path
+  %li= link_to t("actions.named.new", :model => t("activerecord.models.product")), new_admin_product_path
+  %li= link_to t("actions.named.new", :model => t("activerecord.models.category")), new_admin_category_path

@@ -1,4 +1,8 @@
 %h2= t("activerecord.models.article")
+.search.pull-right
+  = form_for @search, :url => admin_articles_path, :html => {:method => :get} do |f|
+    = "#{t('actions.simple.search')} #{t('activerecord.attributes.article.title')}"
+    = f.text_field :title_contains
 #article_list
   %table.bordered-table.zebra-striped
     %thead
@@ -14,5 +18,6 @@
           %td= link_to article.title, [:admin, article]
           %td= article.url
           %td
+            = link_to content_tag(:span, t("actions.simple.view"), :class => "label success"), article_url_path(article.url), :target => "_blank"
             = link_to content_tag(:span, t("actions.simple.edit"), :class => "label notice"), edit_admin_article_path(article)
             = link_to content_tag(:span, t("actions.simple.delete"), :class => "label important"), [:admin, article], :method => :delete, :confirm => t("actions.simple.confirm")

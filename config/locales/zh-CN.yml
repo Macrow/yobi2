@@ -186,11 +186,15 @@ zh-CN:
       even: "必须为双数"
       taken: "已经被使用"
       record_invalid: "验证失败: %{errors}"
+      not_saved:
+        one: "有 1 个错误发生导致无法被保存。"
+        other: "有 %{count} 个错误发生导致无法被保存。"
     template: &errors_template
       header:
         one: "有 1 个错误发生导致「%{model}」无法被保存。"
         other: "有 %{count} 个错误发生导致「%{model}」无法被保存。"
       body: "如下字段出现错误："
+    genernal: 发生错误
 
   activerecord:
     errors:
@@ -205,6 +209,17 @@ zh-CN:
     models:
       user: 用户
       article: 文章
+      article_image: 文章图片
+      category: 目录
+      category_image: 目录图片
+      categories: 目录
+      product: 产品
+      product_image: 产品图片
+      plist: 属性列表
+      property: 属性
+      properties: 属性
+      image: 图像
+      slide: 幻灯
     attributes:
       user:
         login: 用户名或邮箱
@@ -213,10 +228,43 @@ zh-CN:
         password: 密码
         password_confirmation: 确认密码
         current_password: 当前密码
+        is_admin: 管理员
       article:
         title: 题目
         url: 链接地址
         content: 内容
+        tags_text: 标签文本
+        tags: 标签
+        article_images: 文章展示图片
+      product:
+        name: 名称
+        url: 链接地址
+        sn: 编号
+        price_yobi: 友比价格
+        price_retail: 零售价格
+        discount: 折扣
+        description: 描述
+        is_elite: 推荐
+        tags_text: 标签文本
+        tags: 标签
+        images: 图像
+      property:
+        name: 名称
+        value: 内容
+      category:
+        name: 名称
+        url: 访问地址
+        category_images: 目录图片 
+      plist:
+        name: 名称
+      image:
+        is_major: 主要
+      slide:
+        image: 图像
+        title: 标题
+        url: 网址
+        caption: 提示
+        is_hide: 隐藏
               
   helpers:
     select:
@@ -232,11 +280,28 @@ zh-CN:
       edit: 编辑
       delete: 删除
       confirm: 你确定吗？
+      view: 查看
+      reset: 重置
+      select_or_enter: 选择或者输入
+      removed: 已被删除
+      wait: 请等待 ...
+      upload: 上传
+      save_and_edit: 保存并编辑
+      save_and_add_another: 保存后另新建
+      cancel: 取消
+      destroy_confirm: "知道了，删除所欲数据"
+      order: 马上订购
+      contact: 联系友比
+      search: 搜索
+      detail: 了解详细内容 >>
+      back: 返回
+      choose_category: 选择一个目录
     named:    
       new: "添加%{model}"
       edit: "编辑%{model}"
       delete: "删除%{model}"
       management: "%{model}管理"
+      all: "全部%{model}"
   
   flash:
     actions:
@@ -247,6 +312,8 @@ zh-CN:
       destroy:
         notice: "%{resource_name}成功删除"
         alert: "%{resource_name}不能被删除"
+      confirm:
+        notice: "警告！所有下面的数据将会被删除！"
     errors:
       not_found: "%{resource_name}没有找到"
   
@@ -257,7 +324,65 @@ zh-CN:
     edit_password: 更改密码
     unauthorized: 只允许管理员进入！
     
+  will_paginate:
+      previous_label: "&#8592; 上一页"
+      next_label: "下一页 &#8594;"
+      page_gap: "&hellip;"
+      
+  hint:
+    title: 在这里添加标题
+    url: 页面访问的地址(SEO)
+    caption: 展示的提示
+    hide: 隐藏
+    tags: 标签
+    sn: 序列号
+    elite: 选中后将在首页显示
+    price_yobi: 友比价格
+    price_retail: 零售价格
+    slide_image: 请选择尺寸为936x240的图片
+    link: 链接地址
+    name: 姓名
+    email: 电子邮箱
+    
   yobi:
+    slides: 幻灯
     site_title: 友比财务商城
     admin_title: 友比财务商城后台管理
+    site_name: 友比财务商城
     home: 首页
+    website: 网站
+    news: 友比快讯
+    online_service: 在线服务
+    tips: "提示：点击小图标可获得更佳的浏览效果"
+    about: 关于友比
+    products: 浏览产品
+    contacts: 联系方式
+    faq: 常见问题
+    account: 我的账户
+    search: 搜索...
+    user_center: 用户中心
+    sitemap: 网站地图
+    elite_products_1: 热铆装订机
+    elite_products_2: 财务套打账册
+    elite_products_3: 票据软件及耗材
+    elite_product: 推荐产品
+    finance_knowledge: 财务知识
+    products_categories: 产品目录
+    ad_words: ★ 财务之友 比肩同行 ★
+    copyright: 友比科技 版权所有
+    address: 公司地址
+    address_content: 重庆市江北区建北四支路6号
+    tel: 联系电话
+    cellphone: 手机号码
+    advice_1: 为获得最佳浏览效果，建议使用
+    advice_2: 以及最新版本的
+    related_product: 相关产品
+    related_article: 相关文章
+    quick_links: 快捷链接
+    welcome: 欢迎访问友比后台管理中心
+    type: 类型
+    type_count: 数量
+    last_update: 最后更新
+    tag: 标签
+    tag_cloud: 标签云
+    search_empty: 请输入文字进行搜索

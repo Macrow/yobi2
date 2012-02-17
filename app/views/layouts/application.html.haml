@@ -16,8 +16,17 @@
     %header.header
       = render "shared/header"
     #main.row
-      - flash.each do |name, msg|
-        = content_tag :div, msg, :id => "flash_\#{name}" if msg.is_a?(String)
+      - if (controller_name == "home" && action_name == "index")
+        .column.grid_12
+          = render "slidesjs"
+      - else
+        .column.grid_12
+          .banner= display_banner_image
+        .column.grid_12
+          = show_breadcrumbs
+        .column.grid_12
+          - flash.each do |name, msg|
+            = content_tag(:div, msg, :class => "flash #{name}") if msg.is_a?(String)
       = yield
     #layout_footer
   %footer.footer

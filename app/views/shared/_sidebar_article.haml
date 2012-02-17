@@ -1,0 +1,4 @@
+%h4= link_to sidebar_article.title, article_url_path(sidebar_article.url), :target => "_blank"
+.article
+  .content
+    %p= truncate_html(sidebar_article.content, :length => 150, :omission => '..', :word_boundary => true)

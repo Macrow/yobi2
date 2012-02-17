@@ -1,0 +1,5 @@
+<% if @image.valid? %>
+  $('#images').append('<%= escape_javascript(render :partial => "admin/article_images/image", :object => @image, :as => :image, :locals => { :article => @image.article }) %>');
+<% else %>
+	alert("<%= @image.errors.full_messages %>");
+<% end %>

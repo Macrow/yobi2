@@ -4,6 +4,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.3'
 gem 'sqlite3'
+gem 'mysql2'
 
 group :assets do
   gem 'sass-rails',   '~> 3.1.5'
@@ -27,6 +28,15 @@ gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 gem "stringex"
 gem "carrierwave"
 gem "rails_kindeditor"
+gem "ancestry"
+gem "cocoon"
+gem "mini_magick"
+gem "flash_cookie_session"
+gem "meta_search"
+gem 'will_paginate', '~> 3.0'
+gem 'acts-as-taggable-on', '~>2.2.0'
+gem 'truncate_html'
+gem 'cacheable_flash'
 
 gem "rspec-rails", ">= 2.8.0.rc1", :group => [:development, :test]
 
@@ -61,5 +71,7 @@ group :development do
 	gem "spork"
 	gem "guard-spork"
 	gem "ruby_gntp"
+	gem 'ruby-debug19', :platforms => :mri_19
+  gem 'ruby-debug', :platforms => :mri_18
 end
 

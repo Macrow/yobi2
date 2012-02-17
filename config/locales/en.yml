@@ -208,6 +208,7 @@ en:
         one: "1 error prohibited this %{model} from being saved"
         other: "%{count} errors prohibited this %{model} from being saved"
       body: "There were problems with the following fields:"
+    genernal: Something goes wrong
 
   activerecord:
     errors:
@@ -222,6 +223,17 @@ en:
     models:
       user: User
       article: Article
+      article_image:  Article Image
+      category: Category
+      category_image: Category Image
+      categories: Categories
+      product: Product
+      product_image: Product Image
+      plist: PLists
+      property: Property
+      properties: Properties
+      image: Image
+      slide: Slide
     attributes:
       user:
         login: Name or Email
@@ -230,10 +242,43 @@ en:
         password: Password
         password_confirmation: Password Confirmation
         current_password: Current Password
+        is_admin: Admin
       article:
         title: Title
         url: URL
         content: Content
+        tags_text: Tags Text
+        tags: Tags
+        article_images: Article Images
+      product:
+        name: Name
+        url: URL
+        sn: Serial Number
+        price_yobi: Yobi Price
+        price_retail: Retail Price
+        discount: Discount
+        description: Description
+        is_elite: Elite
+        tags_text: Tags Text
+        tags: Tags
+        images: Images
+      property:
+        name: Name
+        value: Value
+      category:
+        name: Name
+        url: Url 
+        category_images: Category Images
+      plist:
+        name: Name
+      image:
+        is_major: Major
+      slide:
+        image: Image
+        title: Title
+        url: URL
+        caption: Caption
+        is_hide: Hide
 
   actions:
     simple:
@@ -241,11 +286,28 @@ en:
       edit: Edit
       delete: Delete
       confirm: Are you sure?
+      view: View
+      reset: Reset
+      select_or_enter: Select or Enter
+      removed: Removed
+      wait: Please wait ...
+      upload: Upload
+      save_and_edit: Save and edit
+      save_and_add_another: Save and add another
+      cancel: Cancel
+      destroy_confirm: "Yes, Destroy All"
+      order: Order Now
+      contact: Contact Yobi
+      search: Search
+      detail: Enter for Details >>
+      back: Back
+      choose_category: Choose a Category
     named:
       new: "New %{model}"
       edit: "Edit %{model}"
       delete: "Delete %{model}"
       management: "%{model} Management"
+      all: "All %{model}"
 
   flash:
     actions:
@@ -256,6 +318,8 @@ en:
       destroy:
         notice: "%{resource_name} was successfully destroyed."
         alert: "%{resource_name} could not be destroyed."
+      confirm:
+        notice: "Warning,everything below will be destroy!"
     errors:
       not_found: "%{resource_name} not found."
 
@@ -265,7 +329,66 @@ en:
     sign_out: Sign out
     edit_password: Edit password
     unauthorized: Administrator Only !
+    
+  will_paginate:
+      previous_label: "&#8592; Previous"
+      next_label: "Next &#8594;"
+      page_gap: "&hellip;"
+      
+  hint:
+    title: add your title here
+    url: url for SEO
+    caption: Caption
+    hide: Hide
+    tags: Tags
+    sn: Serial Number
+    elite: "if true, the product will appear in frontpage"
+    price_yobi: Yobi price
+    price_retail: Retail price
+    slide_image: Please upload picture in size 936x240
+    link: Link
+    name: Name
+    email: Email
+          
   yobi:
-    site_title: YOBI Mall
+    slides: Slides
+    site_title: Finance Mall
     admin_title: YOBI Administration
+    site_name: Yobi Finance Mall
     home: Home
+    website: WebSite
+    news: Yobi News
+    online_service: Online Service
+    tips: "Tips: Click image icon for detail"
+    about: About
+    products: Products
+    contacts: Contacts
+    faq: FAQ
+    account: My Account
+    search: Search...
+    user_center: User Center
+    sitemap: Site Map
+    elite_products_1: Elite Products
+    elite_products_2: Elite Products
+    elite_products_3: Elite Products
+    elite_product: Elite Products
+    finance_knowledge: Finance Knowledge
+    products_categories: Products Categories
+    ad_words: "★ Friends of Finance, Go shoulder to shoulder ★"
+    copyright: Yobi Company Copyright
+    address: Company Address
+    address_content: "Jiang Bei Jian xin 4 road number 6, ChongQing"
+    tel: Telephone
+    cellphone: Cellphone
+    advice_1: "For best view result, advise use"
+    advice_2: And latest
+    related_product: Related Products
+    related_article: Related Articles
+    quick_links: Quick Links
+    welcome: Welcome to Yobi Administration
+    type: Type
+    type_count: Count
+    last_update: Last Update
+    tag: Tag
+    tag_cloud: Tag Cloud
+    search_empty: Please Enter Some Text to Search.

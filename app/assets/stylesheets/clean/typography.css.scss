@@ -22,7 +22,7 @@ p img { margin: 0; }
 p.lead { font-size: 21px; line-height: 27px; color: #777;  }
 
 em { font-style: italic; }
-strong { font-weight: bold; color: #333; }
+strong { font-weight: bold; }
 small { font-size: 80%; }
 
 /*Blockquotes  */
@@ -75,4 +75,13 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 	padding: 1px 5px;
 	background: $background-color;
 	@include border-radius;
+}
+
+.flash {
+	margin: 10px;
+	padding: 5px 10px;
+	border: 1px solid $orange;
+	@include border-radius;
+	background: $orange;
+	color: $white;
 }

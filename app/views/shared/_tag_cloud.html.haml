@@ -1,0 +1,5 @@
+%h3= t("yobi.tag_cloud")
+.tag_cloud
+  - unless tag_cloud.nil?
+    - tag_cloud(tag_cloud, %w(css1 css2 css3 css4)) do |tag, css_class|
+      = link_to tag.name, tags_path(CGI::escape(tag.name)), :class => css_class

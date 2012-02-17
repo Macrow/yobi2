@@ -7,5 +7,7 @@ class CreateArticles < ActiveRecord::Migration
 
       t.timestamps
     end
+    
+    add_index :articles, :url, :unique => true
   end
 end

@@ -1,0 +1,6 @@
+.column.grid_12
+  #categories_list
+    - @categories.each do |c|
+      .category
+        %h2= link_to c.name, category_url_path(c.url)
+        .category_img= link_to image_tag(c.thumb_image), category_url_path(c.url)

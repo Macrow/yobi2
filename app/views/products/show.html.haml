@@ -1,0 +1,38 @@
+.column.grid_9
+  #product_content
+    %h2= @product.title
+    .column.grid_5
+      = image_tag(@product.display_image, :size => "350x350")
+      .tips= t("yobi.tips")
+      .image_grid
+        - @product.images.each do |image|
+          = link_to image_tag(image.image.thumb.icon.url), image.image.url, :title => @product.name, :class => "lightbox"
+    .column.grid_4.pull-left
+      .border.detail
+        %ul
+          %li= (t("activerecord.attributes.product.sn") + ": " + content_tag(:span, @product.sn, :class => "number")).html_safe
+          %li= (t("activerecord.attributes.product.price_yobi") + ": " + content_tag(:span, show_price(@product.price_yobi), :class => "yobi_price")).html_safe
+          %li= (t("activerecord.attributes.product.price_retail") + ": " + content_tag(:span, show_price(@product.price_retail), :class => "retail_price")).html_safe
+          %li= (t("activerecord.attributes.product.discount") + ": " + content_tag(:span, @product.discount, :class => "discount_rate")).html_safe
+        .splitter
+        %ul.detail_property
+          - @product.properties.each do |property|
+            %li= (content_tag(:span, property.name, :class => "property") + property.value).html_safe
+      .order
+        = link_to t("actions.simple.order"), article_url_path("order"), :class => "btn primary large", :target => "_blank"
+        = link_to t("actions.simple.contact"), article_url_path("contact"), :class => "btn success large", :target => "_blank"
+    .column.grid_9
+      .intro
+        %h4= t("activerecord.attributes.product.description")
+        .description= raw @product.description
+.column.grid_3
+  #sidebar.border
+    = render :partial => "shared/tag_cloud", :object => @tags
+    .splitter
+    %h3= t("yobi.related_product")
+    = render :partial => "shared/sidebar_product", :collection => @related_products
+    .splitter
+    %h3= t("yobi.related_article")
+    %ul
+    - @related_articles.each do |article|
+      %li= link_to article.title, article_url_path(article.url)

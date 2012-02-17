@@ -1,0 +1,7 @@
+.nested-fields
+  = f.input :name, :collection => @plists, :prompt => t("actions.simple.select_or_enter")
+  = f.input :name_entered, :label => false
+  = f.input :value
+  = f.input :submit, :label => false do
+    = link_to_remove_association t("actions.simple.delete"), f, :class => 'btn danger'
+  %hr

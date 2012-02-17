@@ -1,0 +1,9 @@
+= simple_form_for [:admin, @plist], :wrapper => :inline do |f|
+  - if f.error_notification
+    .alert-message.warning.fade.in{"data-alert" => "alert"}
+      %a.close{:href => "#"} ×
+      %p= f.error_notification
+  = field_set_tag t("activerecord.models.plist") do
+    = f.input :name, :input_html => { :maxlength => "#{Yobi::TEXT_MAX_LENGTH}", :class => "span10" }, :hint => t("hint.title")
+  = render "admin/shared/multiple_actions", :f => f, :m => :plist
+

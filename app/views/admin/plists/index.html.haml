@@ -1,0 +1,16 @@
+%h2= t("activerecord.models.plist")
+#plist_list
+  %table.bordered-table.zebra-striped
+    %thead
+      %tr
+        %th #
+        %th= t("activerecord.attributes.plist.name")
+        %th= t("actions.named.management", :model => t("activerecord.models.plist")) 
+    %tbody
+      - @plists.each_with_index do |plist, index|
+        %tr
+          %td= index + 1
+          %td= plist.name
+          %td
+            = link_to content_tag(:span, t("actions.simple.edit"), :class => "label notice"), edit_admin_plist_path(plist)
+            = link_to content_tag(:span, t("actions.simple.delete"), :class => "label important"), [:admin, plist], :method => :delete, :confirm => t("actions.simple.confirm")
