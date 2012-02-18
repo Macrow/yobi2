@@ -1,3 +1,4 @@
+#encoding: utf-8
 module ApplicationHelper
   def conditional_html( lang = "en", &block )
     haml_concat Haml::Util::html_safe <<-"HTML".gsub( /^\s+/, '' )
@@ -8,6 +9,60 @@ module ApplicationHelper
       <!--[if (gte IE 9)|!(IE)]><!--> <html lang="#{lang}" class="no-js"> <!--<![endif]-->      
     HTML
     haml_concat capture( &block ) << Haml::Util::html_safe( "\n</html>" ) if block_given?
+  end
+  
+  def title(page_title, show_title = true)
+    content_for(:title) { page_title.to_s }
+    @show_title = show_title
+  end
+  
+  def title_with_sitename(page_title, show_title = true)
+    content_for(:title) { "#{page_title.to_s} - 友比财务商城" }
+    @show_title = show_title
+  end
+  
+  def title_with_page_and_sitename(name, page)
+    if page
+      title_with_sitename "第#{params[:page]}页 #{name}"
+    else
+      title_with_sitename name    
+    end
+  end
+
+  def show_title?
+    @show_title
+  end
+  
+  def default_title
+    "友比财务商城"
+  end
+  
+  def meta_content(keywords, description)
+    keywords = "财务软件,财务配套,装订机,凭证,账册" if keywords.blank?
+    description = "友比财务商城-国内专业财务配套用品网上商城，为您提供：财务软件、财务表单（会计套打账册、业务表单）、装订系列（装订机、胶装机）、打印软件(套打软件、万能票据)等，满足财务电算化日常办公所需，实现企业规范、专业的信息化管理。" if description.blank?
+    content_for :meta do
+      concat "<meta name='Keywords', content='#{keywords}' />\n".html_safe
+      concat "<meta name='Description', content='#{description}' />".html_safe
+    end
+  end
+  
+  def default_meta_content
+    %Q{
+      <meta name='Keywords', content='财务软件,财务配套,装订机,凭证,账册'>
+      <meta name='Description', content='友比财务商城-国内专业财务配套用品网上商城，为您提供：财务软件、财务表单（会计套打账册、业务表单）、装订系列（装订机、胶装机）、打印软件(套打软件、万能票据)等，满足财务电算化日常办公所需，实现企业规范、专业的信息化管理。'>
+    }.html_safe
+  end
+  
+  def meta_nofollow
+    content_for :meta do
+      "<meta name='robots' content='noindex, nofollow' />\n".html_safe
+    end
+  end
+  
+  def canonical_link(url)
+    content_for :meta do
+      "<link rel='canonical' href='#{url}'/>\n".html_safe
+    end
   end
   
   def display_banner_image
@@ -32,7 +87,7 @@ module ApplicationHelper
       end
     end
     if controller_name == "products" && action_name == "show"
-      output << content_tag(:li, link_to(@product.name, product_url_path(@product.url)))
+      output << content_tag(:li, link_to(@product.title, product_url_path(@product.url)))
     end
     if controller_name == "articles" && action_name == "show"
       output << content_tag(:li, link_to(@article.title, article_url_path(@article.url)))

@@ -1,7 +1,8 @@
 !!! 5
 - conditional_html
 %head
-  %title Yobi2
+  %title= show_title? ? yield(:title) : default_title
+  = content_for?(:meta) ? yield(:meta) : default_meta_content
   %meta{:charset => "utf-8"}
   /[if lt IE 9]
     %script{:src => "http://html5shim.googlecode.com/svn/trunk/html5.js"}

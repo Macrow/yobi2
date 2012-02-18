@@ -14,7 +14,7 @@
     %tbody
       - @articles.each_with_index do |article, index|
         %tr
-          %td= index + 1
+          %td= index + 1 + @count_page
           %td= link_to article.title, [:admin, article]
           %td= article.url
           %td

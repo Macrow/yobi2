@@ -229,6 +229,8 @@ zh-CN:
         password_confirmation: 确认密码
         current_password: 当前密码
         is_admin: 管理员
+        sign_in_count: 登陆次数
+        last_sign_in_ip: 最后登录IP
       article:
         title: 题目
         url: 链接地址
@@ -245,6 +247,7 @@ zh-CN:
         discount: 折扣
         description: 描述
         is_elite: 推荐
+        not_elite: 不推荐
         tags_text: 标签文本
         tags: 标签
         images: 图像

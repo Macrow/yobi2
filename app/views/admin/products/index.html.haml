@@ -9,6 +9,7 @@
       %tr
         %th #
         %th= t("activerecord.attributes.product.name")
+        %th= t("activerecord.attributes.product.sn")
         %th= t("activerecord.models.category")
         %th= t("activerecord.attributes.product.url")
         %th= t("activerecord.attributes.product.price_yobi")
@@ -17,18 +18,21 @@
     %tbody
       - @products.each_with_index do |product, index|
         %tr
-          %td= index + 1
+          %td= index + 1 + @count_page
           %td= link_to product.name, product_url_path(product.url), :target => "_blank"
+          %td= product.sn
           %td
             - if product.category
-              = product.category.name
+              = link_to product.category.name, [:edit, :admin, product.category]
             - else
               .label= t("actions.simple.removed")
           %td= product.url
           %td= show_price(product.price_yobi)
           %td
             - if product.is_elite
-              = content_tag(:span, t("activerecord.attributes.product.is_elite"), :class => "label")
+              = link_to content_tag(:span, t("activerecord.attributes.product.is_elite"), :class => "label important"), toggle_elite_admin_product_path(product), :method => :put
+            - else
+              = link_to content_tag(:span, t("activerecord.attributes.product.not_elite"), :class => "label"), toggle_elite_admin_product_path(product), :method => :put
           %td
             = link_to content_tag(:span, t("actions.simple.view"), :class => "label success"), product_url_path(product.url), :target => "_blank"
             = link_to content_tag(:span, t("actions.simple.edit"), :class => "label notice"), edit_admin_product_path(product)

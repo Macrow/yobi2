@@ -1,3 +1,4 @@
+- title_with_sitename "财务之友 比肩同行"
 .column.grid_3
   #sidebar
     .box.article
@@ -16,13 +17,13 @@
 .column.grid_9.home_product
   %h2= t("yobi.elite_products_1")
   .tooltip_container.image_grid
-    - @elite_products.each do |product|
-      = link_to image_tag(product.thumb_image, :title => "#{product.name}<br/>#{t("activerecord.attributes.product.sn")}: #{product.sn}<br/>#{t("activerecord.attributes.product.price_yobi")}: #{product.price_yobi}"), product_url_path(product.url)
+    - @elite_products_1.each do |product|
+      = link_to image_tag(product.thumb_image, :title => "#{product.name}<br/>#{t("activerecord.attributes.product.sn")}: #{product.sn}<br/>#{t("activerecord.attributes.product.price_yobi")}: #{show_price(product.price_yobi)}"), product_url_path(product.url)
   %h2= t("yobi.elite_products_2")
   .tooltip_container.image_grid
-    - @elite_products.each do |product|
-      = link_to image_tag(product.thumb_image, :title => "#{product.name}<br/>#{t("activerecord.attributes.product.sn")}: #{product.sn}<br/>#{t("activerecord.attributes.product.price_yobi")}: #{product.price_yobi}"), product_url_path(product.url)
+    - @elite_products_2.each do |product|
+      = link_to image_tag(product.thumb_image, :title => "#{product.name}<br/>#{t("activerecord.attributes.product.sn")}: #{product.sn}<br/>#{t("activerecord.attributes.product.price_yobi")}: #{show_price(product.price_yobi)}"), product_url_path(product.url)
   %h2= t("yobi.elite_products_3")
   .tooltip_container.image_grid
-    - @elite_products.each do |product|
-      = link_to image_tag(product.thumb_image, :title => "#{product.name}<br/>#{t("activerecord.attributes.product.sn")}: #{product.sn}<br/>#{t("activerecord.attributes.product.price_yobi")}: #{product.price_yobi}"), product_url_path(product.url)
+    - @elite_products_3.each do |product|
+      = link_to image_tag(product.thumb_image, :title => "#{product.name}<br/>#{t("activerecord.attributes.product.sn")}: #{product.sn}<br/>#{t("activerecord.attributes.product.price_yobi")}: #{show_price(product.price_yobi)}"), product_url_path(product.url)

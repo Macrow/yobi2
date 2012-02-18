@@ -1,10 +1,14 @@
+#encoding: utf-8
 class HomeController < ApplicationController
+  # caches_page :index
   before_filter :get_tags, :only => [:tags, :search]
   
   def index
     @lastest_article = Article.first
-    @contact_article = Article.tagged_with("contacts", :any => true).first
-    @elite_products = Product.includes(:major_image).where(:is_elite => true).limit(5)#.where(:category => "")
+    @contact_article = Article.find_by_url("contact")
+    @elite_products_1 = Product.includes(:major_image).where(:is_elite => true).limit(5).where(:category_id => 7)
+    @elite_products_2 = Product.includes(:major_image).where(:is_elite => true).limit(5).where(:category_id => [4, 5])
+    @elite_products_3 = Product.includes(:major_image).where(:is_elite => true).limit(5).where(:category_id => [6, 4])
     @slides = Slide.where(:is_hide => false).limit(6)
   end
   

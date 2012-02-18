@@ -63,3 +63,13 @@ tmp/*
 
 # vim artifacts
 **.swp
+
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/
+.rvmrc
+Capfile
+config/deploy.rb
+public/index.html
+public/uploads/

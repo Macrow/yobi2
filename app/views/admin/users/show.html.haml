@@ -1,4 +1,7 @@
 %h2= @user.name
+%br
 .content
-  %p= @user.name
-  %p= @user.email
+  %p= "#{t('activerecord.attributes.user.name')}: #{@user.name}"
+  %p= "#{t('activerecord.attributes.user.email')}: #{@user.email}"
+  %p= "#{t('activerecord.attributes.user.sign_in_count')}: #{@user.sign_in_count}"
+  %p= "#{t('activerecord.attributes.user.last_sign_in_ip')}: #{@user.last_sign_in_ip}"

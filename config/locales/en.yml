@@ -243,6 +243,8 @@ en:
         password_confirmation: Password Confirmation
         current_password: Current Password
         is_admin: Admin
+        sign_in_count: Sign in Count
+        last_sign_in_ip: Last Sign in IP
       article:
         title: Title
         url: URL
@@ -259,6 +261,7 @@ en:
         discount: Discount
         description: Description
         is_elite: Elite
+        not_elite: Not Elite
         tags_text: Tags Text
         tags: Tags
         images: Images

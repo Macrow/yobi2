@@ -3,7 +3,7 @@ module Admin
     layout "admin"
     include_kindeditor :only => [:new, :create, :edit, :update]
     protect_from_forgery
-    before_filter :authenticate_admin!
+    before_filter :authenticate_admin!, :count_page
     respond_to :html
     
     def create
@@ -40,6 +40,11 @@ module Admin
       unless (authenticate_user! && current_user.is_admin)
         redirect_to root_path, :notice => t("user.unauthorized")
       end
+    end
+    
+    def count_page
+      page = params[:page].nil? ? 1 : params[:page].to_i
+      @count_page = (page - 1) * WillPaginate.per_page
     end
   end
 end

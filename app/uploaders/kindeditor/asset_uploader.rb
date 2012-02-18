@@ -7,7 +7,7 @@ class Kindeditor::AssetUploader < CarrierWave::Uploader::Base
                :media => %w[swf flv mp3 wav wma wmv mid avi mpg asf rm rmvb],
                :file  => %w[doc docx xls xlsx ppt htm html txt zip rar gz bz2]}
 
-  BASE_DIR = "kindeditor_uploads"
+  BASE_DIR = "uploads/kindeditor_uploads"
 
   # Include RMagick or ImageScience support:
   # include CarrierWave::RMagick

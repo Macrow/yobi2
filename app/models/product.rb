@@ -32,7 +32,7 @@ class Product < ActiveRecord::Base
   
   def discount
     begin
-      discount = ((price_yobi/price_retail)*100).to_i.to_s + "%"
+      discount = ((price_yobi.to_f/price_retail.to_f)*100).to_i.to_s + "%"
     rescue
       discount = "N/A"
     end
@@ -45,6 +45,14 @@ class Product < ActiveRecord::Base
   
   def thumb_image
     major_image.nil? ? "no-pic-product-thumb.jpg" : major_image.image.thumb.url
+  end
+  
+  def meta_keywords
+    "#{self.title},财务配套用品,装订机,财务软件"
+  end
+  
+  def meta_description
+    "#{self.title},专业财务系列产品,友比最新价格为#{price_yobi}元,为您节省开支!"
   end
   
   private

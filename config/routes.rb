@@ -19,6 +19,7 @@ Yobi2::Application.routes.draw do
     end
     resources :products do
       get 'destroy_confirm', :on => :member
+      put 'toggle_elite', :on => :member
       resources :product_images, :as => :images, :only => [:create, :update, :destroy]
     end
     resources :categories do

@@ -18,6 +18,12 @@ module Admin
       @product = Product.includes(:properties, :images).find(params[:id])
     end
     
+    def toggle_elite
+      @product = Product.find(params[:id])
+      @product.update_attribute(:is_elite, !@product.is_elite)
+      redirect_to :action =>  :index
+    end
+    
     private
     
     def get_categories_and_plists
