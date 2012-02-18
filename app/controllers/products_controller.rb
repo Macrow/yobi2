@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  WillPaginate.per_page = 20
   before_filter :get_tags
   
   def show
