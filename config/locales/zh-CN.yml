@@ -354,7 +354,7 @@ zh-CN:
     site_name: 友比财务商城
     home: 首页
     website: 网站
-    news: 友比快讯
+    news: 友比资讯
     online_service: 在线服务
     tips: "提示：点击小图标可获得更佳的浏览效果"
     about: 关于友比
@@ -389,3 +389,7 @@ zh-CN:
     tag: 标签
     tag_cloud: 标签云
     search_empty: 请输入文字进行搜索
+    quick_title: 快速指南
+    quick_content: 10秒快速装订流程
+    model_customers: 样板客户
+    

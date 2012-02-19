@@ -6,6 +6,7 @@ class HomeController < ApplicationController
   def index
     @lastest_article = Article.first
     @contact_article = Article.find_by_url("contact")
+    @model_article = Article.find_by_url("model-customers")
     @elite_products_1 = Product.includes(:major_image).where(:is_elite => true).limit(5).where(:category_id => 7)
     @elite_products_2 = Product.includes(:major_image).where(:is_elite => true).limit(5).where(:category_id => [4, 5])
     @elite_products_3 = Product.includes(:major_image).where(:is_elite => true).limit(5).where(:category_id => [6, 4])
