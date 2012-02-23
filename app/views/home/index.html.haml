@@ -4,7 +4,7 @@
     .box.article
       %h3= t("yobi.news")
       - unless @lastest_article.nil?
-        = truncate_html(@lastest_article.content, :length => 150, :omission => '..', :word_boundary => true)
+        = truncate_html(@lastest_article.content, :length => 300, :omission => '..', :word_boundary => true)
     .splitter
     .box
       %h3= t("yobi.quick_title")
@@ -12,7 +12,7 @@
     .splitter
     .box
       %h3= t("yobi.online_service")
-      %p= '<a target=blank href=http://wpa.qq.com/msgrd?V=1&Uin=1574864288&Site=www.51yobi.com&Menu=yes><img border="0" SRC=http://wpa.qq.com/pa?p=1:1574864288:12 alt="点击这里给我发消息"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a target=blank href=http://wpa.qq.com/msgrd?V=1&Uin=2364133372&Site=www.51yobi.com&Menu=yes><img border="0" SRC=http://wpa.qq.com/pa?p=1:2364133372:12 alt="点击这里给我发消息"></a>'.html_safe
+      %p= '<a target=blank href=http://wpa.qq.com/msgrd?V=1&Uin=2388749522&Site=www.51yobi.com&Menu=yes><img border="0" SRC=http://wpa.qq.com/pa?p=1:2388749522:12 alt="点击这里给我发消息"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a target=blank href=http://wpa.qq.com/msgrd?V=1&Uin=2364133372&Site=www.51yobi.com&Menu=yes><img border="0" SRC=http://wpa.qq.com/pa?p=1:2364133372:12 alt="点击这里给我发消息"></a>'.html_safe
     .splitter
     .box
       %h3= t("yobi.model_customers")

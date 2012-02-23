@@ -2,7 +2,7 @@ class Article < ActiveRecord::Base
   validates_presence_of :title
   validates_uniqueness_of :url
   
-  default_scope order("created_at DESC")
+  default_scope order("updated_at DESC")
   
   has_many :images, :class_name => "ArticleImage", :dependent => :destroy
   has_one :major_image, :class_name => "ArticleImage", :conditions => ["is_major = ?", true]
