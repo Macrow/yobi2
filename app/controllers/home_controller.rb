@@ -10,6 +10,7 @@ class HomeController < ApplicationController
     @elite_products_1 = Product.includes(:major_image).where(:is_elite => true).limit(5).where(:category_id => 7)
     @elite_products_2 = Product.includes(:major_image).where(:is_elite => true).limit(5).where(:category_id => [4, 5])
     @elite_products_3 = Product.includes(:major_image).where(:is_elite => true).limit(5).where(:category_id => [6, 11])
+    @elite_products_4 = Product.includes(:major_image).where(:is_elite => true).limit(5).where(:category_id => [13, 14])
     @slides = Slide.where(:is_hide => false).limit(6)
   end
   
