@@ -32,6 +32,7 @@ Yobi2::Application.routes.draw do
     resources :article_images, :as => :aimages, :only => [:index, :destroy]
     resources :slides, :except => :show
     resources :users
+    match "/generate_sitemap" => "home#generate_sitemap"
   end
 
   # The priority is based upon order of creation:

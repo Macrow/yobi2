@@ -36,6 +36,7 @@ gem 'will_paginate', '~> 3.0'
 gem 'acts-as-taggable-on', '~>2.2.0'
 gem 'truncate_html'
 gem 'cacheable_flash'
+gem 'xml-sitemap'
 
 gem "rspec-rails", ">= 2.8.0.rc1", :group => [:development, :test]
 
