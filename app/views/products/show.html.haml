@@ -8,7 +8,7 @@
       .tips= t("yobi.tips")
       .image_grid
         - @product.images.each do |image|
-          = link_to image_tag(image.image.thumb.icon.url), image.image.url, :title => @product.name, :class => "lightbox"
+          = link_to image_tag(image.image.thumb.icon.url, :alt => @product.title), image.image.url, :alt => @product.title, :title => @product.name, :class => "lightbox"
     .column.grid_4.pull-left
       .border.detail
         %ul

@@ -67,7 +67,7 @@ module ApplicationHelper
   
   def display_banner_image
     image = @banner_image.nil? ? "no-pic-banner.jpg" : @banner_image
-    image_tag(image, :size => "936x240")
+    image_tag(image, :size => "936x240", :alt => "Banner")
   end
   
   def show_price(price)
