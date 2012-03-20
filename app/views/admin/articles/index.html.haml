@@ -9,7 +9,8 @@
       %tr
         %th #
         %th= t("activerecord.attributes.article.title")
-        %th= t("activerecord.attributes.article.url") 
+        %th= t("activerecord.attributes.article.url")
+        %th= t("activerecord.attributes.article.is_elite")
         %th= t("actions.named.management", :model => t("activerecord.models.article")) 
     %tbody
       - @articles.each_with_index do |article, index|
@@ -17,6 +18,11 @@
           %td= index + 1 + @count_page
           %td= link_to article.title, [:admin, article]
           %td= article.url
+          %td
+            - if article.is_elite
+              = link_to content_tag(:span, t("activerecord.attributes.article.is_elite"), :class => "label important"), toggle_elite_admin_article_path(article), :method => :put
+            - else
+              = link_to content_tag(:span, t("activerecord.attributes.article.not_elite"), :class => "label"), toggle_elite_admin_article_path(article), :method => :put
           %td
             = link_to content_tag(:span, t("actions.simple.view"), :class => "label success"), article_url_path(article.url), :target => "_blank"
             = link_to content_tag(:span, t("actions.simple.edit"), :class => "label notice"), edit_admin_article_path(article)

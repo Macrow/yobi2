@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   before_filter :get_tags, :only => [:tags, :search]
   
   def index
-    @lastest_article = Article.first
+    @lastest_article = Article.where(:is_elite => true).first
     @contact_article = Article.find_by_url("contact")
     @model_article = Article.find_by_url("model-customers")
     @elite_products_1 = Product.includes(:major_image).where(:is_elite => true).limit(5).where(:category_id => 7)

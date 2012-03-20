@@ -252,6 +252,8 @@ en:
         tags_text: Tags Text
         tags: Tags
         article_images: Article Images
+        is_elite: Elite
+        not_elite: Not Elite
       product:
         name: Name
         url: URL

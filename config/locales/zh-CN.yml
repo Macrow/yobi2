@@ -238,6 +238,8 @@ zh-CN:
         tags_text: 标签文本
         tags: 标签
         article_images: 文章展示图片
+        is_elite: 推荐
+        not_elite: 不推荐
       product:
         name: 名称
         url: 链接地址

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120108144227) do
+ActiveRecord::Schema.define(:version => 20120320152629) do
 
   create_table "article_images", :force => true do |t|
     t.string   "image"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20120108144227) do
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_elite",   :default => false
   end
 
   add_index "articles", ["url"], :name => "index_articles_on_url", :unique => true

@@ -4,7 +4,7 @@
     .box.article
       %h3= t("yobi.news")
       - unless @lastest_article.nil?
-        = truncate_html(@lastest_article.content, :length => 300, :omission => '..', :word_boundary => true)
+        = truncate_html(@lastest_article.content, :length => 600, :omission => '..', :word_boundary => true)
     .splitter
     .box
       %h3= t("yobi.quick_title")

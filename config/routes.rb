@@ -15,6 +15,8 @@ Yobi2::Application.routes.draw do
   namespace :admin do
     root :to => "home#index"
     resources :articles do
+      get 'destroy_confirm', :on => :member
+      put 'toggle_elite', :on => :member
       resources :article_images, :as => :images, :only => [:create, :update, :destroy]
     end
     resources :products do

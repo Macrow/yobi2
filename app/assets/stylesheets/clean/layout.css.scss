@@ -568,6 +568,11 @@ article, #product_content {
 	margin-right: 3px;
 }
 
+.float-right {
+	@include float-right;
+	margin-left: 3px;
+}
+
 .devise {
 	font-size: 0.9em;
 	line-height: 1.5em;

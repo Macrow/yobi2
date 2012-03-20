@@ -1,3 +1,4 @@
+- title_with_sitename @category.name
 .column.grid_8
   #product_list_content
     - @category.children.each do |c|
@@ -7,7 +8,7 @@
       %h2= @category.name
       .tooltip_container.image_grid
         - @products.each do |p|      
-          = link_to image_tag(p.thumb_image, :title => "#{p.name}<br/>#{t("activerecord.attributes.product.sn")}: #{p.sn}<br/>#{t("activerecord.attributes.product.price_yobi")}: #{show_price(p.price_yobi)}<br/>#{t("activerecord.attributes.product.price_retail")}: #{show_price(p.price_retail)}"), product_url_path(p.url)
+          = link_to image_tag(p.thumb_image, :title => "#{p.name}<br/>#{t("activerecord.attributes.product.sn")}: #{p.sn}<br/>#{t("activerecord.attributes.product.price_yobi")}: #{show_price(p.price_yobi)}<br/>#{t("activerecord.attributes.product.price_retail")}: #{show_price(p.price_retail)}", :alt => p.title), product_url_path(p.url), :alt => p.title
       #clean-pagination.pull-right= will_paginate @products
 .column.grid_4
   #sidebar.border

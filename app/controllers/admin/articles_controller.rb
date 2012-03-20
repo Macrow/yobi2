@@ -8,6 +8,12 @@ module Admin
       index! { @articles = @search.all }
     end
     
+    def toggle_elite
+      @article = Article.find(params[:id])
+      @article.update_attribute(:is_elite, !@article.is_elite)
+      redirect_to :action =>  :index
+    end
+    
     private
     def get_tags
       article_tags = Article.tag_counts_on(:tags).all
