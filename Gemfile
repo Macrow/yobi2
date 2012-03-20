@@ -1,6 +1,6 @@
 require 'rbconfig'
 HOST_OS = RbConfig::CONFIG['host_os']
-source 'http://rubygems.org'
+source 'http://ruby.taobao.org'
 
 gem 'rails', '3.1.3'
 gem 'mysql2'
@@ -12,7 +12,7 @@ group :assets do
 	gem 'compass', '~> 0.12.alpha'
 end
 
-gem 'twitter-bootstrap-rails', "1.4.1"
+gem 'twitter-bootstrap-rails', '1.4.1'
 gem 'jquery-rails'
 
 if HOST_OS =~ /linux/i
