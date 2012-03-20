@@ -12,7 +12,7 @@ group :assets do
 	gem 'compass', '~> 0.12.alpha'
 end
 
-gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails', "1.4.1"
 gem 'jquery-rails'
 
 if HOST_OS =~ /linux/i
